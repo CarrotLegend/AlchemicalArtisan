@@ -10,7 +10,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
-@SuppressWarnings ("null")
+@SuppressWarnings ({"null", "unused"})
 public class ModCreativeTabs {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS =
@@ -66,8 +66,11 @@ public class ModCreativeTabs {
                 .title(Component.translatable(
                     "creativetab.alchemicalartisan.blocks"
                 ))
-                .icon(() -> new ItemStack(Items.STONE_BRICKS))
+                .icon(() -> new ItemStack(
+                    ModItems.BLAZING_FURNACE.get()
+                ))
                 .displayItems((parameters, output) -> {
+                    output.accept(ModItems.BLAZING_FURNACE.get());
                 })
                 .build()
         );

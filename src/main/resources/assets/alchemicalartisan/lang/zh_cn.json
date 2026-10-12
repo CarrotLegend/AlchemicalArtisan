@@ -6,5 +6,7 @@
   "item.alchemicalartisan.processed_sinew": "加工兽筋",
   "item.alchemicalartisan.crude_adhesive": "粗制粘合剂",
   "item.alchemicalartisan.adhesive": "粘合剂",
-  "item.alchemicalartisan.universal_repair_material": "万用修补材料"
+  "item.alchemicalartisan.universal_repair_material": "万用修补材料",
+  "block.alchemicalartisan.blazing_furnace": "炽烈熔炉",
+  "container.alchemicalartisan.blazing_furnace": "炽烈熔炉"
 }

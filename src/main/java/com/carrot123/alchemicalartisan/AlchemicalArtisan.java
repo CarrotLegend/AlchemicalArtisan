@@ -1,5 +1,7 @@
 package com.carrot123.alchemicalartisan;
 
+import com.carrot123.alchemicalartisan.registry.ModBlockEntities;
+import com.carrot123.alchemicalartisan.registry.ModBlocks;
 import com.carrot123.alchemicalartisan.registry.ModItems;
 import com.carrot123.alchemicalartisan.registry.ModLootModifiers;
 import com.carrot123.alchemicalartisan.registry.ModToolTiers;
@@ -18,5 +20,7 @@ public class AlchemicalArtisan {
         ModItems.register(modEventBus);
         ModLootModifiers.register(modEventBus);
         ModToolTiers.register();
+        ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
     }
 }

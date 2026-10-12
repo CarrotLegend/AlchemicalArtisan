@@ -6,5 +6,7 @@
   "item.alchemicalartisan.processed_sinew": "Processed Sinew",
   "item.alchemicalartisan.crude_adhesive": "Crude Adhesive",
   "item.alchemicalartisan.adhesive": "Adhesive",
-  "item.alchemicalartisan.universal_repair_material": "Universal Repair Material"
+  "item.alchemicalartisan.universal_repair_material": "Universal Repair Material",
+  "block.alchemicalartisan.blazing_furnace": "Blazing Furnace",
+  "container.alchemicalartisan.blazing_furnace": "Blazing Furnace"
 }
