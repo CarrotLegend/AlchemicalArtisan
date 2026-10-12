@@ -1,0 +1,17 @@
+
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "alchemicalartisan:animal_sinew"
+    },
+    {
+      "tag": "alchemicalartisan:forging_hammers"
+    }
+  ],
+  "result": {
+    "item": "alchemicalartisan:processed_sinew",
+    "count": 1
+  }
+}

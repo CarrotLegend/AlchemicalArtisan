@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "alchemicalartisan:item/universal_repair_material"
+  }
+}

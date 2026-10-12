@@ -1,0 +1,11 @@
+
+{
+  "replace": false,
+  "values": [
+    "alchemicalartisan:wooden_forging_hammer",
+    "alchemicalartisan:iron_forging_hammer",
+    "alchemicalartisan:bronze_forging_hammer",
+    "alchemicalartisan:netherite_forging_hammer",
+    "alchemicalartisan:steel_forging_hammer"
+  ]
+}
