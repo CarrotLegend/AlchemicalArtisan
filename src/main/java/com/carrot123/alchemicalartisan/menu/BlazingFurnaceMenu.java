@@ -1,8 +1,8 @@
-
 package com.carrot123.alchemicalartisan.menu;
 
 import com.carrot123.alchemicalartisan.registry.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -11,7 +11,6 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.util.Mth;
 
 public class BlazingFurnaceMenu extends AbstractFurnaceMenu {
 
@@ -35,7 +34,6 @@ public class BlazingFurnaceMenu extends AbstractFurnaceMenu {
                 container,
                 data
         );
-
         this.furnaceData = data;
     }
 

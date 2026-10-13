@@ -1,4 +1,3 @@
-
 package com.carrot123.alchemicalartisan.client.screen;
 
 import com.carrot123.alchemicalartisan.AlchemicalArtisan;
@@ -16,8 +15,17 @@ public class BlazingFurnaceScreen extends AbstractContainerScreen<BlazingFurnace
             "textures/gui/blazing_furnace.png"
     );
 
+    private static final int ARROW_U = 1;
+    private static final int ARROW_V = 167;
+    private static final int ARROW_X = 78;
+    private static final int ARROW_Y = 32;
     private static final int ARROW_WIDTH = 26;
     private static final int ARROW_HEIGHT = 21;
+
+    private static final int FIRE_U = 28;
+    private static final int FIRE_V = 167;
+    private static final int FIRE_X = 57;
+    private static final int FIRE_Y = 37;
     private static final int FIRE_WIDTH = 13;
     private static final int FIRE_HEIGHT = 13;
 
@@ -35,13 +43,23 @@ public class BlazingFurnaceScreen extends AbstractContainerScreen<BlazingFurnace
         int x = this.leftPos;
         int y = this.topPos;
 
-        graphics.blit(
-                TEXTURE,
-                x, y,
-                0, 0,
-                176, 166,
-                256, 256
-        );
+        graphics.blit(TEXTURE, x, y, 0, 0, 176, 166, 256, 256);
+
+        int progress = this.menu.getBlazingCookProgress(ARROW_WIDTH);
+
+        if (progress > 0) {
+            graphics.blit(
+                    TEXTURE,
+                    x + ARROW_X,
+                    y + ARROW_Y,
+                    ARROW_U,
+                    ARROW_V,
+                    progress,
+                    ARROW_HEIGHT,
+                    256,
+                    256
+            );
+        }
 
         if (this.menu.isBlazing()) {
             int height = this.menu.getBlazingFuelProgress(FIRE_HEIGHT);
@@ -49,43 +67,22 @@ public class BlazingFurnaceScreen extends AbstractContainerScreen<BlazingFurnace
             if (height > 0) {
                 graphics.blit(
                         TEXTURE,
-                        x + 57,
-                        y + 38 + FIRE_HEIGHT - height,
-                        28,
-                        167 + FIRE_HEIGHT - height,
+                        x + FIRE_X,
+                        y + FIRE_Y + FIRE_HEIGHT - height,
+                        FIRE_U,
+                        FIRE_V + FIRE_HEIGHT - height,
                         FIRE_WIDTH,
                         height,
-                        256, 256
+                        256,
+                        256
                 );
             }
-        }
-
-        int progress = this.menu.getBlazingCookProgress(ARROW_WIDTH);
-
-        if (progress > 0) {
-            graphics.blit(
-                    TEXTURE,
-                    x + 78,
-                    y + 30,
-                    1,
-                    167,
-                    progress,
-                    ARROW_HEIGHT,
-                    256, 256
-            );
         }
     }
 
     @Override
     protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
-        graphics.drawString(
-                this.font,
-                this.title,
-                this.titleLabelX,
-                this.titleLabelY,
-                0x404040,
-                false
-        );
+        graphics.drawString(this.font, this.title, 7, 5, 0x404040, false);
     }
 
     @Override

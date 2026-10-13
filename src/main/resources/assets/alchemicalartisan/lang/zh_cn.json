@@ -12,6 +12,11 @@
   "item.alchemicalartisan.adhesive": "粘合剂",
   "item.alchemicalartisan.universal_repair_material": "万用修补材料",
   "item.alchemicalartisan.steel_ingot": "钢锭",
+  "item.alchemicalartisan.wooden_forging_hammer": "木锻锤",
+  "item.alchemicalartisan.iron_forging_hammer": "铁锻锤",
+  "item.alchemicalartisan.bronze_forging_hammer": "青铜锻锤",
+  "item.alchemicalartisan.steel_forging_hammer": "钢锻锤",
+  "item.alchemicalartisan.netherite_forging_hammer": "下界合金锻锤",
 
   "block.alchemicalartisan.blazing_furnace": "炽烈熔炉",
   "block.alchemicalartisan.alloy_furnace": "合金炉",

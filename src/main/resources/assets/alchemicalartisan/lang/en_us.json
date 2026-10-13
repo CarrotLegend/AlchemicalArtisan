@@ -12,6 +12,12 @@
   "item.alchemicalartisan.adhesive": "Adhesive",
   "item.alchemicalartisan.universal_repair_material": "Universal Repair Material",
   "item.alchemicalartisan.steel_ingot": "Steel Ingot",
+  "item.alchemicalartisan.wooden_forging_hammer": "Wooden Forging Hammer",
+  "item.alchemicalartisan.iron_forging_hammer": "Iron Forging Hammer",
+  "item.alchemicalartisan.bronze_forging_hammer": "Bronze Forging Hammer",
+  "item.alchemicalartisan.steel_forging_hammer": "Steel Forging Hammer",
+  "item.alchemicalartisan.netherite_forging_hammer": "Netherite Forging Hammer",
+
   "block.alchemicalartisan.alloy_furnace": "Alloy Furnace",
   "block.alchemicalartisan.blazing_furnace": "Blazing Furnace",
 

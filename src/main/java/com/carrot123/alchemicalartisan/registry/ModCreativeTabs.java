@@ -56,6 +56,7 @@ public class ModCreativeTabs {
                     output.accept(ModItems.CRUDE_ADHESIVE.get());
                     output.accept(ModItems.ADHESIVE.get());
                     output.accept(ModItems.UNIVERSAL_REPAIR_MATERIAL.get());
+                    output.accept(ModItems.STEEL_INGOT.get());
                 })
                 .build()
         );
