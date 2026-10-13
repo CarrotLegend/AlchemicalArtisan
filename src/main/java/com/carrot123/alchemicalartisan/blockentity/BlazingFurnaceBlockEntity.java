@@ -1,6 +1,7 @@
 
 package com.carrot123.alchemicalartisan.blockentity;
 
+import com.carrot123.alchemicalartisan.menu.BlazingFurnaceMenu;
 import com.carrot123.alchemicalartisan.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -40,15 +41,12 @@ public class BlazingFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
     }
 
     @Override
-    protected AbstractContainerMenu createMenu(
-            int containerId,
-            Inventory inventory
-    ) {
-        return new BlastFurnaceMenu(
-                containerId,
-                inventory,
-                this,
-                this.dataAccess
+    protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+        return new BlazingFurnaceMenu(
+            containerId,
+            inventory,
+            this,
+            this.dataAccess
         );
     }
 

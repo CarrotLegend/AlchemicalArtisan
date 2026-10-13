@@ -71,6 +71,7 @@ public class ModCreativeTabs {
                 ))
                 .displayItems((parameters, output) -> {
                     output.accept(ModItems.BLAZING_FURNACE.get());
+                    output.accept(ModItems.ALLOY_FURNACE.get());
                 })
                 .build()
         );

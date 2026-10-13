@@ -34,6 +34,7 @@ public class ModItems {
     public static final RegistryObject<Item> STEEL_FORGING_HAMMER = ITEMS.register("steel_forging_hammer", () -> new ForgingHammerItem(ModToolTiers.STEEL,2.0F, -2.8F, new Item.Properties().durability(ModToolTiers.STEEL.getUses()).fireResistant()));
 
     public static final RegistryObject<Item> BLAZING_FURNACE = ITEMS.register("blazing_furnace", () -> new BlockItem(ModBlocks.BLAZING_FURNACE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ALLOY_FURNACE = ITEMS.register("alloy_furnace", () -> new BlockItem(ModBlocks.ALLOY_FURNACE.get(), new Item.Properties()));
 
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);

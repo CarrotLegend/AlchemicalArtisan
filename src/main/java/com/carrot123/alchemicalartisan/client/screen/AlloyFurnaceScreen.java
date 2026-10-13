@@ -13,20 +13,20 @@ public class AlloyFurnaceScreen extends AbstractContainerScreen<AlloyFurnaceMenu
     private static final ResourceLocation TEXTURE = new ResourceLocation(
             AlchemicalArtisan.MOD_ID, "textures/gui/alloy_furnace.png");
     private static final int PROGRESS_SOURCE_X = 2;
-    private static final int PROGRESS_SOURCE_Y = 166;
-    private static final int PROGRESS_WIDTH = 97;
-    private static final int PROGRESS_HEIGHT = 14;
-    private static final int FIRE_SOURCE_X = 100;
-    private static final int FIRE_SOURCE_Y = 165;
+    private static final int PROGRESS_SOURCE_Y = 163;
+    private static final int PROGRESS_WIDTH = 101;
+    private static final int PROGRESS_HEIGHT = 19;
+    private static final int FIRE_SOURCE_X = 103;
+    private static final int FIRE_SOURCE_Y = 168;
     private static final int FIRE_WIDTH = 13;
-    private static final int FIRE_HEIGHT = 15;
+    private static final int FIRE_HEIGHT = 14;
 
     public AlloyFurnaceScreen(AlloyFurnaceMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
         imageWidth = 176;
-        imageHeight = 164;
+        imageHeight = 166;
         titleLabelX = 7;
-        titleLabelY = -100;
+        titleLabelY = 5;
         inventoryLabelY = -100;
     }
 

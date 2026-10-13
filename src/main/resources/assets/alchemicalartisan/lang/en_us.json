@@ -1,4 +1,8 @@
 {
+  "creativetab.alchemicalartisan.equipment": "Alchemical Artisan: Equipment",
+  "creativetab.alchemicalartisan.materials": "Alchemical Artisan: Materials",
+  "creativetab.alchemicalartisan.blocks": "Alchemical Artisan: Blocks",
+
   "item.alchemicalartisan.paper_forging_blueprint": "Paper Forging Blueprint",
   "item.alchemicalartisan.parchment_forging_blueprint": "Parchment Forging Blueprint",
   "item.alchemicalartisan.herbal_fiber": "Herbal Fiber",
@@ -7,6 +11,10 @@
   "item.alchemicalartisan.crude_adhesive": "Crude Adhesive",
   "item.alchemicalartisan.adhesive": "Adhesive",
   "item.alchemicalartisan.universal_repair_material": "Universal Repair Material",
+  "item.alchemicalartisan.steel_ingot": "Steel Ingot",
+  "block.alchemicalartisan.alloy_furnace": "Alloy Furnace",
   "block.alchemicalartisan.blazing_furnace": "Blazing Furnace",
+
+  "container.alchemicalartisan.alloy_furnace": "Alloy Furnace",
   "container.alchemicalartisan.blazing_furnace": "Blazing Furnace"
 }

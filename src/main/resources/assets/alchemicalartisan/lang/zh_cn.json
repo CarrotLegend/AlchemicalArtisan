@@ -1,4 +1,8 @@
 {
+  "creativetab.alchemicalartisan.equipment": "炼金工匠：装备",
+  "creativetab.alchemicalartisan.materials": "炼金工匠：材料",
+  "creativetab.alchemicalartisan.blocks": "炼金工匠：方块",
+
   "item.alchemicalartisan.paper_forging_blueprint": "纸质锻造图纸",
   "item.alchemicalartisan.parchment_forging_blueprint": "羊皮纸锻造图纸",
   "item.alchemicalartisan.herbal_fiber": "草本纤维",
@@ -7,6 +11,12 @@
   "item.alchemicalartisan.crude_adhesive": "粗制粘合剂",
   "item.alchemicalartisan.adhesive": "粘合剂",
   "item.alchemicalartisan.universal_repair_material": "万用修补材料",
+  "item.alchemicalartisan.steel_ingot": "钢锭",
+
   "block.alchemicalartisan.blazing_furnace": "炽烈熔炉",
-  "container.alchemicalartisan.blazing_furnace": "炽烈熔炉"
+  "block.alchemicalartisan.alloy_furnace": "合金炉",
+  
+  "container.alchemicalartisan.blazing_furnace": "炽烈熔炉",
+  "container.alchemicalartisan.alloy_furnace": "合金炉"
+
 }
