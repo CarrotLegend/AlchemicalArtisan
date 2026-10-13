@@ -1,0 +1,10 @@
+{
+  "type": "alchemicalartisan:alloying",
+  "ingredients": [
+    {"ingredient": {"item": "minecraft:iron_ingot"}, "count": 9},
+    {"ingredient": {"item": "minecraft:coal"}, "count": 1}
+  ],
+  "result": {"item": "alchemicalartisan:steel_ingot", "count": 9},
+  "fuel_level": 2,
+  "cooking_time": 200
+}

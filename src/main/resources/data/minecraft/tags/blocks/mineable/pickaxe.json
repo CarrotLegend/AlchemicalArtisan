@@ -1,6 +1,1 @@
-{
-  "replace": false,
-  "values": [
-    "alchemicalartisan:blazing_furnace"
-  ]
-}
+{"replace": false, "values": ["alchemicalartisan:alloy_furnace"]}

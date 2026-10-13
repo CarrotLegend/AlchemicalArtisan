@@ -2,8 +2,12 @@ package com.carrot123.alchemicalartisan;
 
 import com.carrot123.alchemicalartisan.registry.ModBlockEntities;
 import com.carrot123.alchemicalartisan.registry.ModBlocks;
+import com.carrot123.alchemicalartisan.registry.ModCreativeTabs;
 import com.carrot123.alchemicalartisan.registry.ModItems;
 import com.carrot123.alchemicalartisan.registry.ModLootModifiers;
+import com.carrot123.alchemicalartisan.registry.ModMenuTypes;
+import com.carrot123.alchemicalartisan.registry.ModRecipeSerializers;
+import com.carrot123.alchemicalartisan.registry.ModRecipeTypes;
 import com.carrot123.alchemicalartisan.registry.ModToolTiers;
 
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,5 +26,9 @@ public class AlchemicalArtisan {
         ModToolTiers.register();
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModCreativeTabs.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+        ModRecipeTypes.register(modEventBus);
+        ModRecipeSerializers.register(modEventBus);
     }
 }

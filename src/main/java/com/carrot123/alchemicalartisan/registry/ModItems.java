@@ -25,7 +25,8 @@ public class ModItems {
     public static final RegistryObject<Item> CRUDE_ADHESIVE = ITEMS.register("crude_adhesive", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ADHESIVE = ITEMS.register("adhesive", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> UNIVERSAL_REPAIR_MATERIAL = ITEMS.register("universal_repair_material", () -> new Item(new Item.Properties()));
-    
+    public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> WOODEN_FORGING_HAMMER = ITEMS.register("wooden_forging_hammer", () -> new ForgingHammerItem(Tiers.WOOD,2.0F, -2.8F, new Item.Properties().durability(Tiers.WOOD.getUses())));
     public static final RegistryObject<Item> IRON_FORGING_HAMMER = ITEMS.register("iron_forging_hammer", () -> new ForgingHammerItem(Tiers.IRON,2.0F, -2.8F, new Item.Properties().durability(Tiers.IRON.getUses())));
     public static final RegistryObject<Item> BRONZE_FORGING_HAMMER = ITEMS.register("bronze_forging_hammer", () -> new ForgingHammerItem(ModToolTiers.BRONZE,2.0F, -2.8F, new Item.Properties().durability(ModToolTiers.BRONZE.getUses())));
