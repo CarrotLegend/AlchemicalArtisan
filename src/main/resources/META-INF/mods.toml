@@ -22,3 +22,10 @@ mandatory=true
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
+
+[[dependencies.alchemicalartisan]]
+modId="jei"
+mandatory=false
+versionRange="[15.0.0,)"
+ordering="NONE"
+side="CLIENT"

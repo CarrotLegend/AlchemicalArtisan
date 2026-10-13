@@ -22,5 +22,10 @@
   "block.alchemicalartisan.blazing_furnace": "Blazing Furnace",
 
   "container.alchemicalartisan.alloy_furnace": "Alloy Furnace",
-  "container.alchemicalartisan.blazing_furnace": "Blazing Furnace"
+  "container.alchemicalartisan.blazing_furnace": "Blazing Furnace",
+
+  "jei.alchemicalartisan.alloy.fuel_level": "Minimum Fuel Tier: %s",
+  "jei.alchemicalartisan.alloy.time": "Smelting Time: %s s",
+  "jei.alchemicalartisan.blazing.batch": "Up to 4 inputs per batch, %s s",
+  "jei.alchemicalartisan.blazing.bonus": "12% chance for 1 bonus output"
 }
