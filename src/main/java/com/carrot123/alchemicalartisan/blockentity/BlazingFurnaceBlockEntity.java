@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.ForgeHooks;
 
 import java.util.Optional;
 
@@ -23,6 +24,14 @@ public class BlazingFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
 
     private static final int MAX_BATCH = 4;
     private static final float BONUS_CHANCE = 0.12F;
+
+    public static int getMaxBatch() {
+        return MAX_BATCH;
+    }
+
+    public static int getBonusChancePercent() {
+        return Math.round(BONUS_CHANCE * 100);
+    }
 
     public BlazingFurnaceBlockEntity(BlockPos pos, BlockState state) {
         super(
@@ -52,7 +61,15 @@ public class BlazingFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
 
     @Override
     protected int getBurnDuration(ItemStack fuel) {
-        int duration = super.getBurnDuration(fuel);
+        return getFuelDuration(fuel);
+    }
+
+    public static int getFuelDuration(ItemStack fuel) {
+        if (fuel.isEmpty()) {
+            return 0;
+        }
+
+        int duration = ForgeHooks.getBurnTime(fuel, RecipeType.BLASTING);
         return duration > 0 ? Math.max(1, duration / 2) : 0;
     }
 

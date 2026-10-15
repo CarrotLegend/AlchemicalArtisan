@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import io.netty.handler.codec.DecoderException;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TagParser;
 import net.minecraft.network.FriendlyByteBuf;
@@ -23,13 +24,13 @@ public class AlloyRecipeSerializer implements RecipeSerializer<AlloyRecipe> {
     @Override
     public AlloyRecipe fromJson(ResourceLocation id, JsonObject json) {
         JsonArray array = GsonHelper.getAsJsonArray(json, "ingredients");
-        if (array.size() < 1 || array.size() > 4) throw new JsonParseException("Alloy furnace requires 1 to 4 inputs");
+        if (array.size() < 1 || array.size() > 4) { throw new JsonParseException("Alloy furnace requires 1 to 4 inputs"); }
         List<AlloyRecipe.Input> inputs = new ArrayList<>();
         for (int i = 0; i < array.size(); i++) {
             JsonObject entry = GsonHelper.convertToJsonObject(array.get(i), "ingredients[" + i + "]");
             Ingredient ingredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(entry, "ingredient"));
             int count = GsonHelper.getAsInt(entry, "count", 1);
-            if (count < 1 || count > 64) throw new JsonParseException("Input count must be 1..64");
+            if (count < 1 || count > 64) { throw new JsonParseException("Input count must be 1..64"); }
             CompoundTag nbt = null;
             if (entry.has("nbt")) {
                 try { nbt = TagParser.parseTag(GsonHelper.getAsString(entry, "nbt")); }
@@ -40,23 +41,44 @@ public class AlloyRecipeSerializer implements RecipeSerializer<AlloyRecipe> {
         ItemStack result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
         int fuelLevel = GsonHelper.getAsInt(json, "fuel_level", 1);
         int cookingTime = GsonHelper.getAsInt(json, "cooking_time", 200);
-        if (fuelLevel < 1 || fuelLevel > 4 || cookingTime < 1) throw new JsonParseException("Invalid alloy fuel level or cooking time");
+        if (fuelLevel < 1 || fuelLevel > 4) {
+            throw new JsonParseException("Alloy fuel level must be 1..4");
+        }
+        if (cookingTime < 1 || cookingTime > 32767) {
+            throw new JsonParseException("Alloy cooking time must be 1..32767 ticks");
+        }
         return new AlloyRecipe(id, inputs, result, fuelLevel, cookingTime);
     }
 
     @Override
     public AlloyRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
         int size = buffer.readVarInt();
+        if (size < 1 || size > 4) {
+            throw new DecoderException("Alloy furnace requires 1 to 4 inputs");
+        }
         List<AlloyRecipe.Input> inputs = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             Ingredient ingredient = Ingredient.fromNetwork(buffer);
             int count = buffer.readVarInt();
-            CompoundTag nbt = buffer.readBoolean() ? buffer.readNbt() : null;
+            if (count < 1 || count > 64) {
+                throw new DecoderException("Alloy input count must be 1..64");
+            }
+            boolean hasNbt = buffer.readBoolean();
+            CompoundTag nbt = hasNbt ? buffer.readNbt() : null;
+            if (hasNbt && nbt == null) {
+                throw new DecoderException("Missing alloy input NBT");
+            }
             inputs.add(new AlloyRecipe.Input(ingredient, count, nbt));
         }
         ItemStack result = buffer.readItem();
         int fuelLevel = buffer.readVarInt();
         int cookingTime = buffer.readVarInt();
+        if (fuelLevel < 1 || fuelLevel > 4) {
+            throw new DecoderException("Alloy fuel level must be 1..4");
+        }
+        if (cookingTime < 1 || cookingTime > 32767) {
+            throw new DecoderException("Alloy cooking time must be 1..32767 ticks");
+        }
         return new AlloyRecipe(id, inputs, result, fuelLevel, cookingTime);
     }
 
@@ -67,7 +89,7 @@ public class AlloyRecipeSerializer implements RecipeSerializer<AlloyRecipe> {
             input.ingredient().toNetwork(buffer);
             buffer.writeVarInt(input.count());
             buffer.writeBoolean(input.nbt() != null);
-            if (input.nbt() != null) buffer.writeNbt(input.nbt());
+            if (input.nbt() != null) { buffer.writeNbt(input.nbt()); }
         }
         buffer.writeItem(recipe.getResultItem(null));
         buffer.writeVarInt(recipe.getFuelLevel());

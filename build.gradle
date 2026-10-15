@@ -3,10 +3,11 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'net.minecraftforge.gradle' version '6.0.54'
 }
 
 def mcVersion = (findProperty('minecraft_version') ?: '1.20.1').toString()
+def mcVersionRange = property('minecraft_version_range').toString()
 def forgeVersion = (findProperty('forge_version') ?: '47.4.20').toString()
 def mappingChannel = (findProperty('mapping_channel') ?: 'official').toString()
 def mappingVersion = (findProperty('mapping_version') ?: '1.20.1').toString()
@@ -15,10 +16,12 @@ def modId = 'alchemicalartisan'
 def modName = 'Alchemical Artisan'
 def modGroup = 'com.carrot123.alchemicalartisan'
 def modVersion = (findProperty('mod_version') ?: '1.0.0').toString()
+def modLicense = property('mod_license').toString()
 def modAuthors = 'carrotlegend'
 def modDescription = 'A mod that combines magic, alchemy, and forging.'
 
-def jeiVersionRange = '[15.0.0,16.0.0)'
+def jeiVersion = '15.62.0.219'
+def jeiVersionRange = '[15.62.0.219,16.0.0)'
 
 version = modVersion
 group = modGroup
@@ -89,9 +92,9 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${mcVersion}-${forgeVersion}"
 
-    compileOnly fg.deobf("mezz.jei:jei-${mcVersion}-common-api:${jeiVersionRange}")
-    compileOnly fg.deobf("mezz.jei:jei-${mcVersion}-forge-api:${jeiVersionRange}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${mcVersion}-forge:${jeiVersionRange}")
+    compileOnly fg.deobf("mezz.jei:jei-${mcVersion}-common-api:${jeiVersion}")
+    compileOnly fg.deobf("mezz.jei:jei-${mcVersion}-forge-api:${jeiVersion}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${mcVersion}-forge:${jeiVersion}")
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
@@ -99,13 +102,13 @@ dependencies {
 tasks.named('processResources', ProcessResources).configure {
     def replaceProperties = [
             minecraft_version      : mcVersion,
-            minecraft_version_range: '[1.20.1,1.21)',
+            minecraft_version_range: mcVersionRange,
             forge_version          : forgeVersion,
             forge_version_range    : '[47.4.0,)',
             loader_version_range   : '[47,)',
             mod_id                 : modId,
             mod_name               : modName,
-            mod_license            : 'All Rights Reserved',
+            mod_license            : modLicense,
             mod_version            : modVersion,
             mod_authors            : modAuthors,
             mod_description        : modDescription,

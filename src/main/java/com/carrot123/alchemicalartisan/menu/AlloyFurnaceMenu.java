@@ -71,29 +71,29 @@ public class AlloyFurnaceMenu extends AbstractContainerMenu {
     @Override public ItemStack quickMoveStack(Player player, int index) {
         ItemStack result = ItemStack.EMPTY;
         Slot slot = slots.get(index);
-        if (!slot.hasItem()) return result;
+        if (!slot.hasItem()) { return result; }
         ItemStack stack = slot.getItem();
         result = stack.copy();
 
         if (index == AlloyFurnaceBlockEntity.OUTPUT_SLOT) {
-            if (!moveItemStackTo(stack, PLAYER_START, PLAYER_END, true)) return ItemStack.EMPTY;
+            if (!moveItemStackTo(stack, PLAYER_START, PLAYER_END, true)) { return ItemStack.EMPTY; }
             slot.onQuickCraft(stack, result);
         } else if (index < PLAYER_START) {
-            if (!moveItemStackTo(stack, PLAYER_START, PLAYER_END, false)) return ItemStack.EMPTY;
+            if (!moveItemStackTo(stack, PLAYER_START, PLAYER_END, false)) { return ItemStack.EMPTY; }
         } else {
             if (AlloyFurnaceBlockEntity.getFuelLevel(stack) > 0 && moveItemStackTo(stack, 4, 5, false)) {
             } else if (!moveItemStackTo(stack, 0, 4, false)) {
                 if (index < 33) {
-                    if (!moveItemStackTo(stack, 33, 42, false)) return ItemStack.EMPTY;
+                    if (!moveItemStackTo(stack, 33, 42, false)) { return ItemStack.EMPTY; }
                 } else if (!moveItemStackTo(stack, 6, 33, false)) {
                     return ItemStack.EMPTY;
                 }
             }
         }
 
-        if (stack.isEmpty()) slot.setByPlayer(ItemStack.EMPTY);
-        else slot.setChanged();
-        if (stack.getCount() == result.getCount()) return ItemStack.EMPTY;
+        if (stack.isEmpty()) { slot.setByPlayer(ItemStack.EMPTY); }
+        else { slot.setChanged(); }
+        if (stack.getCount() == result.getCount()) { return ItemStack.EMPTY; }
         slot.onTake(player, stack);
         return result;
     }

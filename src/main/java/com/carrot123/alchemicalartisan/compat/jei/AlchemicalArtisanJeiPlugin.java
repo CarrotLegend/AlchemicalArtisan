@@ -17,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.BlastingRecipe;
 import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -65,7 +66,7 @@ public class AlchemicalArtisanJeiPlugin implements IModPlugin {
 
         List<BlastingRecipe> blastingRecipes =
                 manager.getAllRecipesFor(
-                        net.minecraft.world.item.crafting.RecipeType.BLASTING
+                        RecipeType.BLASTING
                 );
 
         registration.addRecipes(

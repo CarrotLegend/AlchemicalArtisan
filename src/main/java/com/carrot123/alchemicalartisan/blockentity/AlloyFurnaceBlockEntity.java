@@ -27,6 +27,7 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 
 public class AlloyFurnaceBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
 
@@ -86,19 +87,19 @@ public class AlloyFurnaceBlockEntity extends BaseContainerBlockEntity implements
     }
 
     public static int getFuelLevel(ItemStack stack) {
-        if (stack.is(Items.CHARCOAL)) return 1;
-        if (stack.is(Items.COAL) || stack.is(Items.COAL_BLOCK)) return 2;
-        if (stack.is(Items.BLAZE_POWDER) || stack.is(Items.BLAZE_ROD)) return 3;
-        if (stack.is(ModItems.ETHER_FUEL.get())) return 4;
+        if (stack.is(Items.CHARCOAL)) { return 1; }
+        if (stack.is(Items.COAL) || stack.is(Items.COAL_BLOCK)) { return 2; }
+        if (stack.is(Items.BLAZE_POWDER) || stack.is(Items.BLAZE_ROD)) { return 3; }
+        if (stack.is(ModItems.ETHER_FUEL.get())) { return 4; }
         return 0;
     }
 
     public static int getFuelDuration(ItemStack stack) {
-        if (stack.is(Items.CHARCOAL) || stack.is(Items.COAL)) return 1600;
-        if (stack.is(Items.COAL_BLOCK)) return 16000;
-        if (stack.is(Items.BLAZE_POWDER)) return 1200;
-        if (stack.is(Items.BLAZE_ROD)) return 2400;
-        if (stack.is(ModItems.ETHER_FUEL.get())) return 24000;
+        if (stack.is(Items.CHARCOAL) || stack.is(Items.COAL)) { return 1600; }
+        if (stack.is(Items.COAL_BLOCK)) { return 16000; }
+        if (stack.is(Items.BLAZE_POWDER)) { return 1200; }
+        if (stack.is(Items.BLAZE_ROD)) { return 2400; }
+        if (stack.is(ModItems.ETHER_FUEL.get())) { return 24000; }
         return 0;
     }
 
@@ -295,6 +296,12 @@ public class AlloyFurnaceBlockEntity extends BaseContainerBlockEntity implements
             AlloyFurnaceBlockEntity furnace
     ) {
         boolean wasLit = furnace.burnTime > 0;
+        int previousBurnTime = furnace.burnTime;
+        int previousBurnDuration = furnace.burnDuration;
+        int previousProgress = furnace.progress;
+        int previousProgressTotal = furnace.progressTotal;
+        int previousFuelLevel = furnace.burningFuelLevel;
+        ResourceLocation previousRecipe = furnace.currentRecipe;
 
         if (furnace.burnTime > 0) {
             furnace.burnTime--;
@@ -370,9 +377,10 @@ public class AlloyFurnaceBlockEntity extends BaseContainerBlockEntity implements
 
         boolean isLit = furnace.burnTime > 0;
 
-        if (wasLit != isLit
-                || state.getValue(AlloyFurnaceBlock.LIT) != isLit) {
+        boolean blockStateChanged = wasLit != isLit
+                || state.getValue(AlloyFurnaceBlock.LIT) != isLit;
 
+        if (blockStateChanged) {
             level.setBlock(
                     pos,
                     state.setValue(AlloyFurnaceBlock.LIT, isLit),
@@ -380,6 +388,14 @@ public class AlloyFurnaceBlockEntity extends BaseContainerBlockEntity implements
             );
         }
 
-        furnace.setChanged();
+        if (blockStateChanged
+                || previousBurnTime != furnace.burnTime
+                || previousBurnDuration != furnace.burnDuration
+                || previousProgress != furnace.progress
+                || previousProgressTotal != furnace.progressTotal
+                || previousFuelLevel != furnace.burningFuelLevel
+                || !Objects.equals(previousRecipe, furnace.currentRecipe)) {
+            furnace.setChanged();
+        }
     }
 }

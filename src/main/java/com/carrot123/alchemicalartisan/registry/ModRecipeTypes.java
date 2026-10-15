@@ -3,6 +3,7 @@ package com.carrot123.alchemicalartisan.registry;
 
 import com.carrot123.alchemicalartisan.AlchemicalArtisan;
 import com.carrot123.alchemicalartisan.recipe.AlloyRecipe;
+import com.carrot123.alchemicalartisan.recipe.AlloyRecipeType;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -18,14 +19,7 @@ public class ModRecipeTypes {
             );
 
     public static final RegistryObject<RecipeType<AlloyRecipe>> ALLOYING =
-            RECIPE_TYPES.register("alloying",
-                    () -> new RecipeType<AlloyRecipe>() {
-                        @Override
-                        public String toString() {
-                            return AlchemicalArtisan.MOD_ID + ":alloying";
-                        }
-                    }
-            );
+            RECIPE_TYPES.register("alloying", () -> AlloyRecipeType.INSTANCE);
 
     public static void register(IEventBus eventBus) {
         RECIPE_TYPES.register(eventBus);

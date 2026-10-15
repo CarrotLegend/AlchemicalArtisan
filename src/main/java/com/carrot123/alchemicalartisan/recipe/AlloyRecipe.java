@@ -27,7 +27,7 @@ public class AlloyRecipe implements Recipe<SimpleContainer> {
             return !stack.isEmpty()
                     && ingredient.test(stack)
                     && stack.getCount() >= count
-                    && Objects.equals(stack.getTag(), nbt);
+                    && (nbt == null || Objects.equals(stack.getTag(), nbt));
         }
     }
 
@@ -51,22 +51,24 @@ public class AlloyRecipe implements Recipe<SimpleContainer> {
 
     @Nullable
     public int[] findInputSlots(Container container) {
-        if (container.getContainerSize() < 4) return null;
+        if (container.getContainerSize() < 4) { return null; }
         int occupied = 0;
-        for (int i = 0; i < 4; i++) if (!container.getItem(i).isEmpty()) occupied++;
-        if (occupied != inputs.size()) return null;
+        for (int i = 0; i < 4; i++) {
+            if (!container.getItem(i).isEmpty()) { occupied++; }
+        }
+        if (occupied != inputs.size()) { return null; }
         int[] assignment = new int[inputs.size()];
         Arrays.fill(assignment, -1);
         return find(0, container, new boolean[4], assignment) ? assignment : null;
     }
 
     private boolean find(int inputIndex, Container container, boolean[] used, int[] assignment) {
-        if (inputIndex == inputs.size()) return true;
+        if (inputIndex == inputs.size()) { return true; }
         for (int slot = 0; slot < 4; slot++) {
             if (!used[slot] && inputs.get(inputIndex).matches(container.getItem(slot))) {
                 used[slot] = true;
                 assignment[inputIndex] = slot;
-                if (find(inputIndex + 1, container, used, assignment)) return true;
+                if (find(inputIndex + 1, container, used, assignment)) { return true; }
                 used[slot] = false;
                 assignment[inputIndex] = -1;
             }

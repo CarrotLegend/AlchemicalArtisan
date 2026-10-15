@@ -1,6 +1,7 @@
 package com.carrot123.alchemicalartisan.compat.jei;
 
 import com.carrot123.alchemicalartisan.AlchemicalArtisan;
+import com.carrot123.alchemicalartisan.blockentity.BlazingFurnaceBlockEntity;
 import com.carrot123.alchemicalartisan.registry.ModBlocks;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -16,8 +17,8 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.BlastingRecipe;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.Locale;
@@ -40,6 +41,7 @@ public class BlazingFurnaceJeiCategory implements IRecipeCategory<BlastingRecipe
     private final IDrawable background;
     private final IDrawable image;
     private final IDrawable icon;
+    private final List<ItemStack> fuels;
 
     public BlazingFurnaceJeiCategory(IGuiHelper helper) {
         this.background = helper.createBlankDrawable(176, 112);
@@ -51,6 +53,10 @@ public class BlazingFurnaceJeiCategory implements IRecipeCategory<BlastingRecipe
         this.icon = helper.createDrawableItemStack(
                 new ItemStack(ModBlocks.BLAZING_FURNACE.get())
         );
+        this.fuels = ForgeRegistries.ITEMS.getValues().stream()
+                .map(ItemStack::new)
+                .filter(stack -> BlazingFurnaceBlockEntity.getFuelDuration(stack) > 0)
+                .toList();
     }
 
     @Override
@@ -91,13 +97,7 @@ public class BlazingFurnaceJeiCategory implements IRecipeCategory<BlastingRecipe
                 RecipeIngredientRole.INPUT,
                 56,
                 58
-        ).addItemStacks(List.of(
-                new ItemStack(Items.CHARCOAL),
-                new ItemStack(Items.COAL),
-                new ItemStack(Items.COAL_BLOCK),
-                new ItemStack(Items.BLAZE_POWDER),
-                new ItemStack(Items.BLAZE_ROD)
-        ));
+        ).addItemStacks(fuels);
 
         builder.addSlot(
                 RecipeIngredientRole.OUTPUT,
@@ -131,6 +131,7 @@ public class BlazingFurnaceJeiCategory implements IRecipeCategory<BlastingRecipe
                 Minecraft.getInstance().font,
                 Component.translatable(
                         "jei.alchemicalartisan.blazing.batch",
+                        BlazingFurnaceBlockEntity.getMaxBatch(),
                         seconds
                 ),
                 7,
@@ -142,7 +143,8 @@ public class BlazingFurnaceJeiCategory implements IRecipeCategory<BlastingRecipe
         graphics.drawString(
                 Minecraft.getInstance().font,
                 Component.translatable(
-                        "jei.alchemicalartisan.blazing.bonus"
+                        "jei.alchemicalartisan.blazing.bonus",
+                        BlazingFurnaceBlockEntity.getBonusChancePercent()
                 ),
                 7,
                 98,

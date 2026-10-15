@@ -3,6 +3,7 @@ package com.carrot123.alchemicalartisan.block;
 import com.carrot123.alchemicalartisan.blockentity.AlloyFurnaceBlockEntity;
 import com.carrot123.alchemicalartisan.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.Containers;
@@ -17,6 +18,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -40,7 +42,7 @@ public class AlloyFurnaceBlock extends BaseEntityBlock implements EntityBlock {
     public AlloyFurnaceBlock(BlockBehaviour.Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
-                .setValue(HorizontalDirectionalBlock.FACING, net.minecraft.core.Direction.NORTH)
+                .setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH)
                 .setValue(LIT, false));
     }
 
@@ -57,7 +59,7 @@ public class AlloyFurnaceBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HorizontalDirectionalBlock.FACING, LIT);
     }
 
