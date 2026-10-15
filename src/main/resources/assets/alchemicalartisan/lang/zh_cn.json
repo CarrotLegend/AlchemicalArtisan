@@ -17,6 +17,10 @@
   "item.alchemicalartisan.bronze_forging_hammer": "青铜锻锤",
   "item.alchemicalartisan.steel_forging_hammer": "钢锻锤",
   "item.alchemicalartisan.netherite_forging_hammer": "下界合金锻锤",
+  "item.alchemicalartisan.ether_extractor": "以太提取器",
+  "item.alchemicalartisan.ether_fuel": "以太燃料",
+  "item.alchemicalartisan.ether_ingot": "以太合金锭",
+  "item.alchemicalartisan.bottled_ether": "瓶中以太",
 
   "block.alchemicalartisan.blazing_furnace": "炽烈熔炉",
   "block.alchemicalartisan.alloy_furnace": "合金炉",
@@ -27,5 +31,8 @@
   "jei.alchemicalartisan.alloy.fuel_level": "最低燃料等级：%s",
   "jei.alchemicalartisan.alloy.time": "熔炼时间：%s 秒",
   "jei.alchemicalartisan.blazing.batch": "每批最多4份原料，耗时%s秒",
-  "jei.alchemicalartisan.blazing.bonus": "12%概率额外产出1份"
+  "jei.alchemicalartisan.blazing.bonus": "12%概率额外产出1份",
+
+  "message.alchemicalartisan.ether_extractor.end_only": "只有在末地才能提取以太",
+  "message.alchemicalartisan.ether_extractor.need_bottle": "副手需要持有玻璃瓶"
 }

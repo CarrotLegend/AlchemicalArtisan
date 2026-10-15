@@ -57,6 +57,10 @@ public class ModCreativeTabs {
                     output.accept(ModItems.ADHESIVE.get());
                     output.accept(ModItems.UNIVERSAL_REPAIR_MATERIAL.get());
                     output.accept(ModItems.STEEL_INGOT.get());
+                    output.accept(ModItems.ETHER_EXTRACTOR.get());
+                    output.accept(ModItems.ETHER_FUEL.get());
+                    output.accept(ModItems.ETHER_INGOT.get());
+                    output.accept(ModItems.BOTTLED_ETHER.get());
                 })
                 .build()
         );

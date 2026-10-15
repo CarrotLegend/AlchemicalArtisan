@@ -1,6 +1,8 @@
 package com.carrot123.alchemicalartisan.registry;
 
 import com.carrot123.alchemicalartisan.AlchemicalArtisan;
+import com.carrot123.alchemicalartisan.item.EtherExtractorItem;
+import com.carrot123.alchemicalartisan.item.EtherFuelItem;
 import com.carrot123.alchemicalartisan.item.ForgingHammerItem;
 
 import net.minecraft.world.item.BlockItem;
@@ -26,6 +28,11 @@ public class ModItems {
     public static final RegistryObject<Item> ADHESIVE = ITEMS.register("adhesive", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> UNIVERSAL_REPAIR_MATERIAL = ITEMS.register("universal_repair_material", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ETHER_EXTRACTOR = ITEMS.register("ether_extractor", () -> new EtherExtractorItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> ETHER_FUEL = ITEMS.register("ether_fuel", () -> new EtherFuelItem(new Item.Properties()));
+    public static final RegistryObject<Item> ETHER_INGOT = ITEMS.register("ether_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BOTTLED_ETHER = ITEMS.register("bottled_ether", () -> new Item(new Item.Properties()));
+
 
     public static final RegistryObject<Item> WOODEN_FORGING_HAMMER = ITEMS.register("wooden_forging_hammer", () -> new ForgingHammerItem(Tiers.WOOD,2.0F, -2.8F, new Item.Properties().durability(Tiers.WOOD.getUses())));
     public static final RegistryObject<Item> IRON_FORGING_HAMMER = ITEMS.register("iron_forging_hammer", () -> new ForgingHammerItem(Tiers.IRON,2.0F, -2.8F, new Item.Properties().durability(Tiers.IRON.getUses())));

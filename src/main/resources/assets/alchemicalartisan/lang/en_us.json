@@ -17,7 +17,11 @@
   "item.alchemicalartisan.bronze_forging_hammer": "Bronze Forging Hammer",
   "item.alchemicalartisan.steel_forging_hammer": "Steel Forging Hammer",
   "item.alchemicalartisan.netherite_forging_hammer": "Netherite Forging Hammer",
-
+  "item.alchemicalartisan.ether_extractor": "Ether Extractor",
+  "item.alchemicalartisan.ether_fuel": "Ether Fuel",
+  "item.alchemicalartisan.ether_ingot": "Ether Ingot",
+  "item.alchemicalartisan.bottled_ether": "Bottled Ether",
+  
   "block.alchemicalartisan.alloy_furnace": "Alloy Furnace",
   "block.alchemicalartisan.blazing_furnace": "Blazing Furnace",
 
@@ -27,5 +31,8 @@
   "jei.alchemicalartisan.alloy.fuel_level": "Minimum Fuel Tier: %s",
   "jei.alchemicalartisan.alloy.time": "Smelting Time: %s s",
   "jei.alchemicalartisan.blazing.batch": "Up to 4 inputs per batch, %s s",
-  "jei.alchemicalartisan.blazing.bonus": "12% chance for 1 bonus output"
+  "jei.alchemicalartisan.blazing.bonus": "12% chance for 1 bonus output",
+
+  "message.alchemicalartisan.ether_extractor.end_only": "Ether can only be extracted in the End",
+  "message.alchemicalartisan.ether_extractor.need_bottle": "A glass bottle is required in your offhand"
 }
