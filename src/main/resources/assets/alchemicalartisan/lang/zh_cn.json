@@ -21,6 +21,11 @@
   "item.alchemicalartisan.ether_fuel": "以太燃料",
   "item.alchemicalartisan.ether_ingot": "以太合金锭",
   "item.alchemicalartisan.bottled_ether": "瓶中以太",
+  "item.alchemicalartisan.flint_knife": "燧石小刀",
+  "item.alchemicalartisan.stone_knife": "石小刀",
+  "item.alchemicalartisan.iron_knife": "铁小刀",
+  "item.alchemicalartisan.tin_ingot": "锡锭",
+  "item.alchemicalartisan.bronze_ingot": "青铜锭",
 
   "block.alchemicalartisan.blazing_furnace": "炽烈熔炉",
   "block.alchemicalartisan.alloy_furnace": "合金炉",

@@ -4,9 +4,15 @@ import com.carrot123.alchemicalartisan.AlchemicalArtisan;
 import com.carrot123.alchemicalartisan.item.EtherExtractorItem;
 import com.carrot123.alchemicalartisan.item.EtherFuelItem;
 import com.carrot123.alchemicalartisan.item.ForgingHammerItem;
+import com.carrot123.alchemicalartisan.item.KnifeItem;
 
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -28,7 +34,9 @@ public class ModItems {
     public static final RegistryObject<Item> ADHESIVE = ITEMS.register("adhesive", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> UNIVERSAL_REPAIR_MATERIAL = ITEMS.register("universal_repair_material", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ETHER_EXTRACTOR = ITEMS.register("ether_extractor", () -> new EtherExtractorItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> TIN_INGOT = ITEMS.register("tin_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_INGOT = ITEMS.register("bronze_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ETHER_EXTRACTOR = ITEMS.register("ether_extractor", () -> new EtherExtractorItem(new Item.Properties().stacksTo(1).durability(8)));
     public static final RegistryObject<Item> ETHER_FUEL = ITEMS.register("ether_fuel", () -> new EtherFuelItem(new Item.Properties()));
     public static final RegistryObject<Item> ETHER_INGOT = ITEMS.register("ether_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BOTTLED_ETHER = ITEMS.register("bottled_ether", () -> new Item(new Item.Properties()));
@@ -39,6 +47,19 @@ public class ModItems {
     public static final RegistryObject<Item> BRONZE_FORGING_HAMMER = ITEMS.register("bronze_forging_hammer", () -> new ForgingHammerItem(ModToolTiers.BRONZE,2.0F, -2.8F, new Item.Properties().durability(ModToolTiers.BRONZE.getUses())));
     public static final RegistryObject<Item> NETHERITE_FORGING_HAMMER = ITEMS.register("netherite_forging_hammer", () -> new ForgingHammerItem(Tiers.NETHERITE,2.0F, -2.8F, new Item.Properties().durability(Tiers.NETHERITE.getUses()).fireResistant()));
     public static final RegistryObject<Item> STEEL_FORGING_HAMMER = ITEMS.register("steel_forging_hammer", () -> new ForgingHammerItem(ModToolTiers.STEEL,2.0F, -2.8F, new Item.Properties().durability(ModToolTiers.STEEL.getUses()).fireResistant()));
+    public static final RegistryObject<Item> FLINT_KNIFE = ITEMS.register("flint_knife", () -> new KnifeItem( Tiers.WOOD, new Item.Properties().durability(59)));
+    public static final RegistryObject<Item> STONE_KNIFE = ITEMS.register("stone_knife", () -> new KnifeItem(Tiers.STONE, new Item.Properties().durability(131)));
+    public static final RegistryObject<Item> IRON_KNIFE = ITEMS.register("iron_knife", () -> new KnifeItem(Tiers.IRON, new Item.Properties().durability(250)));
+    public static final RegistryObject<Item> BRONZE_SWORD = ITEMS.register("bronze_sword", () -> new SwordItem(ModToolTiers.BRONZE, 3, -2.4F, new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_PICKAXE = ITEMS.register("bronze_pickaxe", () -> new PickaxeItem(ModToolTiers.BRONZE, 1, -2.8F, new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_AXE = ITEMS.register("bronze_axe", () -> new AxeItem(ModToolTiers.BRONZE, 5.0F, -3.0F, new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_SHOVEL = ITEMS.register("bronze_shovel", () -> new ShovelItem(ModToolTiers.BRONZE, 1.5F, -3.0F, new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_HOE = ITEMS.register("bronze_hoe", () -> new HoeItem(ModToolTiers.BRONZE, -3, 0.0F, new Item.Properties()));
+    public static final RegistryObject<Item> STEEL_SWORD = ITEMS.register("steel_sword", () -> new SwordItem(ModToolTiers.STEEL, 3, -2.4F, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> STEEL_PICKAXE = ITEMS.register("steel_pickaxe", () -> new PickaxeItem(ModToolTiers.STEEL, 1, -2.8F, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> STEEL_AXE = ITEMS.register("steel_axe", () -> new AxeItem(ModToolTiers.STEEL, 5.0F, -3.0F, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> STEEL_SHOVEL = ITEMS.register("steel_shovel", () -> new ShovelItem(ModToolTiers.STEEL, 1.5F, -3.0F, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> STEEL_HOE = ITEMS.register("steel_hoe", () -> new HoeItem(ModToolTiers.STEEL, -4, 0.0F, new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> BLAZING_FURNACE = ITEMS.register("blazing_furnace", () -> new BlockItem(ModBlocks.BLAZING_FURNACE.get(), new Item.Properties()));
     public static final RegistryObject<Item> ALLOY_FURNACE = ITEMS.register("alloy_furnace", () -> new BlockItem(ModBlocks.ALLOY_FURNACE.get(), new Item.Properties()));

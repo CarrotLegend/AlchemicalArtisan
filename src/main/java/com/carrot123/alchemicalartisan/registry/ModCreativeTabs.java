@@ -33,7 +33,11 @@ public class ModCreativeTabs {
                     output.accept(ModItems.IRON_FORGING_HAMMER.get());
                     output.accept(ModItems.BRONZE_FORGING_HAMMER.get());
                     output.accept(ModItems.NETHERITE_FORGING_HAMMER.get());
-                    output.accept(ModItems.STEEL_FORGING_HAMMER.get());
+                    output.accept(ModItems.STEEL_FORGING_HAMMER.get());            
+                    output.accept(ModItems.FLINT_KNIFE.get());
+                    output.accept(ModItems.STONE_KNIFE.get());
+                    output.accept(ModItems.IRON_KNIFE.get());
+
                 })
                 .build()
         );
@@ -56,10 +60,12 @@ public class ModCreativeTabs {
                     output.accept(ModItems.CRUDE_ADHESIVE.get());
                     output.accept(ModItems.ADHESIVE.get());
                     output.accept(ModItems.UNIVERSAL_REPAIR_MATERIAL.get());
-                    output.accept(ModItems.STEEL_INGOT.get());
+                    output.accept(ModItems.STEEL_INGOT.get());        
+                    output.accept(ModItems.TIN_INGOT.get());
+                    output.accept(ModItems.BRONZE_INGOT.get());
+                    output.accept(ModItems.ETHER_INGOT.get());
                     output.accept(ModItems.ETHER_EXTRACTOR.get());
                     output.accept(ModItems.ETHER_FUEL.get());
-                    output.accept(ModItems.ETHER_INGOT.get());
                     output.accept(ModItems.BOTTLED_ETHER.get());
                 })
                 .build()

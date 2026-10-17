@@ -32,11 +32,11 @@ public class ModToolTiers {
     public static final Tier BRONZE =
             TierSortingRegistry.registerTier(
                     new ForgeTier(
-                            Tiers.DIAMOND.getLevel(),
-                            Tiers.DIAMOND.getUses(),
-                            Tiers.DIAMOND.getSpeed(),
-                            Tiers.DIAMOND.getAttackDamageBonus(),
-                            Tiers.DIAMOND.getEnchantmentValue(),
+                            3,
+                            1561,
+                            8.0F,
+                            3.0F,
+                            10,
                             Tiers.DIAMOND.getTag(),
                             () -> Ingredient.of(BRONZE_INGOTS)
                     ),
@@ -51,11 +51,11 @@ public class ModToolTiers {
     public static final Tier STEEL =
             TierSortingRegistry.registerTier(
                     new ForgeTier(
-                            Tiers.NETHERITE.getLevel(),
-                            Tiers.NETHERITE.getUses(),
-                            Tiers.NETHERITE.getSpeed(),
-                            Tiers.NETHERITE.getAttackDamageBonus(),
-                            Tiers.NETHERITE.getEnchantmentValue(),
+                            4,
+                            2031,
+                            9.0F,
+                            4.0F,
+                            15,
                             Tiers.NETHERITE.getTag(),
                             () -> Ingredient.of(STEEL_INGOTS)
                     ),

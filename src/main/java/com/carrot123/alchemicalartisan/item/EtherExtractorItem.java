@@ -38,16 +38,6 @@ public class EtherExtractorItem extends Item {
             return InteractionResultHolder.fail(stack);
         }
 
-        if (!level.dimension().equals(Level.END)) {
-            if (!level.isClientSide) {
-                player.displayClientMessage(
-                        Component.translatable("message.alchemicalartisan.ether_extractor.end_only"),
-                        true
-                );
-            }
-            return InteractionResultHolder.fail(stack);
-        }
-
         if (!player.getOffhandItem().is(Items.GLASS_BOTTLE)) {
             if (!level.isClientSide) {
                 player.displayClientMessage(
@@ -65,10 +55,6 @@ public class EtherExtractorItem extends Item {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         if (!(entity instanceof Player player) || level.isClientSide) {
-            return stack;
-        }
-
-        if (!level.dimension().equals(Level.END)) {
             return stack;
         }
 
@@ -103,6 +89,12 @@ public class EtherExtractorItem extends Item {
                 SoundSource.PLAYERS,
                 1.0F,
                 1.0F
+        );
+
+        stack.hurtAndBreak(
+                1,
+                player,
+                entityPlayer -> entityPlayer.broadcastBreakEvent(InteractionHand.MAIN_HAND)
         );
 
         return stack;

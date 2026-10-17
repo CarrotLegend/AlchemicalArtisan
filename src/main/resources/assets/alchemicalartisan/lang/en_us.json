@@ -21,6 +21,12 @@
   "item.alchemicalartisan.ether_fuel": "Ether Fuel",
   "item.alchemicalartisan.ether_ingot": "Ether Ingot",
   "item.alchemicalartisan.bottled_ether": "Bottled Ether",
+  "item.alchemicalartisan.flint_knife": "Flint Knife",
+  "item.alchemicalartisan.stone_knife": "Stone Knife",
+  "item.alchemicalartisan.iron_knife": "Iron Knife",
+  "item.alchemicalartisan.tin_ingot": "Tin Ingot",
+  "item.alchemicalartisan.bronze_ingot": "Bronze Ingot",
+
   
   "block.alchemicalartisan.alloy_furnace": "Alloy Furnace",
   "block.alchemicalartisan.blazing_furnace": "Blazing Furnace",
