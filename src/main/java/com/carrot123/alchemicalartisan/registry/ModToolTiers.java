@@ -1,4 +1,3 @@
-
 package com.carrot123.alchemicalartisan.registry;
 
 import com.carrot123.alchemicalartisan.AlchemicalArtisan;
@@ -27,6 +26,15 @@ public class ModToolTiers {
             TagKey.create(
                     Registries.ITEM,
                     new ResourceLocation("forge", "ingots/steel")
+            );
+
+    private static final TagKey<Item> ETHER_ALLOY_INGOTS =
+            TagKey.create(
+                    Registries.ITEM,
+                    new ResourceLocation(
+                            AlchemicalArtisan.MOD_ID,
+                            "ingots/ether_alloy"
+                    )
             );
 
     public static final Tier BRONZE =
@@ -64,6 +72,25 @@ public class ModToolTiers {
                             "steel"
                     ),
                     List.of(Tiers.NETHERITE),
+                    List.of()
+            );
+
+    public static final Tier ETHER_ALLOY =
+            TierSortingRegistry.registerTier(
+                    new ForgeTier(
+                            5,
+                            2500,
+                            10.0F,
+                            5.0F,
+                            20,
+                            Tiers.NETHERITE.getTag(),
+                            () -> Ingredient.of(ETHER_ALLOY_INGOTS)
+                    ),
+                    new ResourceLocation(
+                            AlchemicalArtisan.MOD_ID,
+                            "ether_alloy"
+                    ),
+                    List.of(Tiers.NETHERITE, STEEL),
                     List.of()
             );
 

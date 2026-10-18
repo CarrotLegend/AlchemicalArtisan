@@ -34,13 +34,18 @@ public class ModItems {
     public static final RegistryObject<Item> ADHESIVE = ITEMS.register("adhesive", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> UNIVERSAL_REPAIR_MATERIAL = ITEMS.register("universal_repair_material", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STEEL_NUGGET = ITEMS.register("steel_nugget", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_TIN = ITEMS.register("raw_tin", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TIN_INGOT = ITEMS.register("tin_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TIN_NUGGET = ITEMS.register("tin_nugget", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TIN_DUST = ITEMS.register("tin_dust", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_INGOT = ITEMS.register("bronze_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_NUGGET = ITEMS.register("bronze_nugget", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRONZE_DUST = ITEMS.register("bronze_dust", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ETHER_EXTRACTOR = ITEMS.register("ether_extractor", () -> new EtherExtractorItem(new Item.Properties().stacksTo(1).durability(8)));
     public static final RegistryObject<Item> ETHER_FUEL = ITEMS.register("ether_fuel", () -> new EtherFuelItem(new Item.Properties()));
     public static final RegistryObject<Item> ETHER_INGOT = ITEMS.register("ether_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BOTTLED_ETHER = ITEMS.register("bottled_ether", () -> new Item(new Item.Properties()));
-
 
     public static final RegistryObject<Item> WOODEN_FORGING_HAMMER = ITEMS.register("wooden_forging_hammer", () -> new ForgingHammerItem(Tiers.WOOD,2.0F, -2.8F, new Item.Properties().durability(Tiers.WOOD.getUses())));
     public static final RegistryObject<Item> IRON_FORGING_HAMMER = ITEMS.register("iron_forging_hammer", () -> new ForgingHammerItem(Tiers.IRON,2.0F, -2.8F, new Item.Properties().durability(Tiers.IRON.getUses())));
@@ -60,6 +65,11 @@ public class ModItems {
     public static final RegistryObject<Item> STEEL_AXE = ITEMS.register("steel_axe", () -> new AxeItem(ModToolTiers.STEEL, 5.0F, -3.0F, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> STEEL_SHOVEL = ITEMS.register("steel_shovel", () -> new ShovelItem(ModToolTiers.STEEL, 1.5F, -3.0F, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> STEEL_HOE = ITEMS.register("steel_hoe", () -> new HoeItem(ModToolTiers.STEEL, -4, 0.0F, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ETHER_SWORD = ITEMS.register("ether_sword", () -> new SwordItem(ModToolTiers.ETHER_ALLOY, 3, -2.4F, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ETHER_PICKAXE = ITEMS.register("ether_pickaxe", () -> new PickaxeItem(ModToolTiers.ETHER_ALLOY, 1, -2.8F, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ETHER_AXE = ITEMS.register("ether_axe", () -> new AxeItem(ModToolTiers.ETHER_ALLOY, 5.0F, -3.0F, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ETHER_SHOVEL = ITEMS.register("ether_shovel", () -> new ShovelItem(ModToolTiers.ETHER_ALLOY, 1.5F, -3.0F, new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ETHER_HOE = ITEMS.register("ether_hoe", () -> new HoeItem(ModToolTiers.ETHER_ALLOY, -5, 0.0F, new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> BLAZING_FURNACE = ITEMS.register("blazing_furnace", () -> new BlockItem(ModBlocks.BLAZING_FURNACE.get(), new Item.Properties()));
     public static final RegistryObject<Item> ALLOY_FURNACE = ITEMS.register("alloy_furnace", () -> new BlockItem(ModBlocks.ALLOY_FURNACE.get(), new Item.Properties()));

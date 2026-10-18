@@ -37,6 +37,21 @@ public class ModCreativeTabs {
                     output.accept(ModItems.FLINT_KNIFE.get());
                     output.accept(ModItems.STONE_KNIFE.get());
                     output.accept(ModItems.IRON_KNIFE.get());
+                    output.accept(ModItems.BRONZE_SWORD.get());
+                    output.accept(ModItems.BRONZE_PICKAXE.get());
+                    output.accept(ModItems.BRONZE_AXE.get());
+                    output.accept(ModItems.BRONZE_SHOVEL.get());
+                    output.accept(ModItems.BRONZE_HOE.get());
+                    output.accept(ModItems.STEEL_SWORD.get());
+                    output.accept(ModItems.STEEL_PICKAXE.get());
+                    output.accept(ModItems.STEEL_AXE.get());
+                    output.accept(ModItems.STEEL_SHOVEL.get());
+                    output.accept(ModItems.STEEL_HOE.get());
+                    output.accept(ModItems.ETHER_SWORD.get());
+                    output.accept(ModItems.ETHER_PICKAXE.get());
+                    output.accept(ModItems.ETHER_AXE.get());
+                    output.accept(ModItems.ETHER_SHOVEL.get());
+                    output.accept(ModItems.ETHER_HOE.get());
 
                 })
                 .build()
@@ -60,9 +75,15 @@ public class ModCreativeTabs {
                     output.accept(ModItems.CRUDE_ADHESIVE.get());
                     output.accept(ModItems.ADHESIVE.get());
                     output.accept(ModItems.UNIVERSAL_REPAIR_MATERIAL.get());
-                    output.accept(ModItems.STEEL_INGOT.get());        
+                    output.accept(ModItems.RAW_TIN.get()); 
+                    output.accept(ModItems.STEEL_INGOT.get());
+                    output.accept(ModItems.STEEL_NUGGET.get());
                     output.accept(ModItems.TIN_INGOT.get());
+                    output.accept(ModItems.TIN_NUGGET.get());
+                    output.accept(ModItems.TIN_DUST.get());
                     output.accept(ModItems.BRONZE_INGOT.get());
+                    output.accept(ModItems.BRONZE_NUGGET.get());
+                    output.accept(ModItems.BRONZE_DUST.get());
                     output.accept(ModItems.ETHER_INGOT.get());
                     output.accept(ModItems.ETHER_EXTRACTOR.get());
                     output.accept(ModItems.ETHER_FUEL.get());
