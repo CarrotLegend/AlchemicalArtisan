@@ -3,6 +3,7 @@ package com.carrot123.alchemicalartisan;
 import com.carrot123.alchemicalartisan.registry.ModBlockEntities;
 import com.carrot123.alchemicalartisan.registry.ModBlocks;
 import com.carrot123.alchemicalartisan.registry.ModCreativeTabs;
+import com.carrot123.alchemicalartisan.registry.ModEntities;
 import com.carrot123.alchemicalartisan.registry.ModItems;
 import com.carrot123.alchemicalartisan.registry.ModLootModifiers;
 import com.carrot123.alchemicalartisan.registry.ModMenuTypes;
@@ -30,5 +31,6 @@ public class AlchemicalArtisan {
         ModMenuTypes.register(modEventBus);
         ModRecipeTypes.register(modEventBus);
         ModRecipeSerializers.register(modEventBus);
+        ModEntities.register(modEventBus);
     }
 }

@@ -3,6 +3,7 @@ package com.carrot123.alchemicalartisan.registry;
 import com.carrot123.alchemicalartisan.AlchemicalArtisan;
 import com.carrot123.alchemicalartisan.blockentity.AlloyFurnaceBlockEntity;
 import com.carrot123.alchemicalartisan.blockentity.BlazingFurnaceBlockEntity;
+import com.carrot123.alchemicalartisan.blockentity.ForgingTableBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -29,6 +30,13 @@ public class ModBlockEntities {
                     () -> BlockEntityType.Builder.of(
                             AlloyFurnaceBlockEntity::new,
                             ModBlocks.ALLOY_FURNACE.get()
+                    ).build(null));
+
+    public static final RegistryObject<BlockEntityType<ForgingTableBlockEntity>> FORGING_TABLE =
+            BLOCK_ENTITIES.register("forging_table",
+                    () -> BlockEntityType.Builder.of(
+                            ForgingTableBlockEntity::new,
+                            ModBlocks.FORGING_TABLE.get()
                     ).build(null));
 
     public static void register(IEventBus eventBus) {

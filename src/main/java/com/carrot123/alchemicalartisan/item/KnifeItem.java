@@ -1,4 +1,3 @@
-
 package com.carrot123.alchemicalartisan.item;
 
 import com.carrot123.alchemicalartisan.registry.ModItems;
@@ -48,5 +47,30 @@ public class KnifeItem extends SwordItem {
         }
 
         return super.mineBlock(stack, level, state, pos, miner);
+    }
+
+    @Override
+    public boolean hasCraftingRemainingItem(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public ItemStack getCraftingRemainingItem(ItemStack stack) {
+        if (stack.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+
+        ItemStack remaining = stack.copy();
+        remaining.setCount(1);
+
+        int newDamage = remaining.getDamageValue() + 1;
+
+        if (newDamage >= remaining.getMaxDamage()) {
+            return ItemStack.EMPTY;
+        }
+
+        remaining.setDamageValue(newDamage);
+
+        return remaining;
     }
 }

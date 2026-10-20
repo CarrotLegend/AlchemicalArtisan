@@ -66,7 +66,8 @@ public class ModCreativeTabs {
                 .icon(() -> new ItemStack(
                     ModItems.ANIMAL_SINEW.get()
                 ))
-                .displayItems((parameters, output) -> {
+                .displayItems((parameters, output) -> {    
+                    output.accept(ModItems.PROCESSED_SHEEPSKIN.get());
                     output.accept(ModItems.PAPER_FORGING_BLUEPRINT.get());
                     output.accept(ModItems.PARCHMENT_FORGING_BLUEPRINT.get());
                     output.accept(ModItems.HERBAL_FIBER.get());
@@ -88,6 +89,8 @@ public class ModCreativeTabs {
                     output.accept(ModItems.ETHER_EXTRACTOR.get());
                     output.accept(ModItems.ETHER_FUEL.get());
                     output.accept(ModItems.BOTTLED_ETHER.get());
+                    output.accept(ModItems.EXPLOSIVE.get());
+                    output.accept(ModItems.BLASTING_EXPLOSIVE.get());
                 })
                 .build()
         );
@@ -104,6 +107,7 @@ public class ModCreativeTabs {
                 .displayItems((parameters, output) -> {
                     output.accept(ModItems.BLAZING_FURNACE.get());
                     output.accept(ModItems.ALLOY_FURNACE.get());
+                    output.accept(ModItems.FORGING_TABLE.get());
                 })
                 .build()
         );

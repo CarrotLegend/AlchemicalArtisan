@@ -3,6 +3,7 @@ package com.carrot123.alchemicalartisan.registry;
 import com.carrot123.alchemicalartisan.AlchemicalArtisan;
 import com.carrot123.alchemicalartisan.block.AlloyFurnaceBlock;
 import com.carrot123.alchemicalartisan.block.BlazingFurnaceBlock;
+import com.carrot123.alchemicalartisan.block.ForgingTableBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -25,6 +26,10 @@ public class ModBlocks {
             BLOCKS.register("alloy_furnace",
                     () -> new AlloyFurnaceBlock(
                             BlockBehaviour.Properties.copy(Blocks.BLAST_FURNACE)));
+
+    public static final RegistryObject<Block> FORGING_TABLE =
+            BLOCKS.register("forging_table",
+                    () -> new ForgingTableBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL)));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "alchemicalartisan:flint_knife",
+    "alchemicalartisan:stone_knife",
+    "alchemicalartisan:iron_knife"
+  ]
+}
