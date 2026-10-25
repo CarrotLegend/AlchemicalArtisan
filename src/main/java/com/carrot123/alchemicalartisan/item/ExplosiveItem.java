@@ -8,6 +8,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
@@ -15,7 +16,7 @@ import net.minecraft.world.level.Level;
 
 public class ExplosiveItem extends Item {
 
-    public static final float THROW_SPEED = 1.5F;
+    public static final float THROW_SPEED = 3.0F;
     public static final float EXPLOSION_POWER = 2.0F;
     public static final double EXPLOSION_RADIUS = 4.0D;
 
@@ -30,6 +31,14 @@ public class ExplosiveItem extends Item {
         return breaksBlocks;
     }
 
+    public static float getChargePower(int useTicks) {
+        return BowItem.getPowerForTime(Math.max(0, useTicks));
+    }
+
+    public static float getThrowSpeed(int useTicks) {
+        return THROW_SPEED * getChargePower(useTicks);
+    }
+
     @Override
     public int getUseDuration(ItemStack stack) {
         return 72000;
@@ -37,7 +46,7 @@ public class ExplosiveItem extends Item {
 
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.NONE;
+        return UseAnim.BOW;
     }
 
     @Override
@@ -62,6 +71,13 @@ public class ExplosiveItem extends Item {
             return;
         }
 
+        int useTicks = getUseDuration(stack) - timeLeft;
+        float chargePower = getChargePower(useTicks);
+
+        if (chargePower < 0.1F) {
+            return;
+        }
+
         ExplosiveProjectile projectile =
                 new ExplosiveProjectile(level, player, breaksBlocks);
 
@@ -70,7 +86,7 @@ public class ExplosiveItem extends Item {
                 player.getXRot(),
                 player.getYRot(),
                 0.0F,
-                THROW_SPEED,
+                getThrowSpeed(useTicks),
                 0.0F
         );
 

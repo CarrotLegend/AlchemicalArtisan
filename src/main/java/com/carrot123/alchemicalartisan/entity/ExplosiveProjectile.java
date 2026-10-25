@@ -25,6 +25,8 @@ import net.minecraftforge.fml.common.Mod;
 )
 public class ExplosiveProjectile extends ThrowableItemProjectile {
 
+    public static final float ARROW_GRAVITY = 0.05F;
+
     private static final EntityDataAccessor<Boolean> BREAKS_BLOCKS =
             SynchedEntityData.defineId(
                     ExplosiveProjectile.class,
@@ -58,6 +60,11 @@ public class ExplosiveProjectile extends ThrowableItemProjectile {
     protected void defineSynchedData() {
         super.defineSynchedData();
         entityData.define(BREAKS_BLOCKS, false);
+    }
+
+    @Override
+    protected float getGravity() {
+        return ARROW_GRAVITY;
     }
 
     public boolean breaksBlocks() {

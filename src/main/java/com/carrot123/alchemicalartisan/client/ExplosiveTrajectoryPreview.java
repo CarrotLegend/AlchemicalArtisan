@@ -1,7 +1,7 @@
-
 package com.carrot123.alchemicalartisan.client;
 
 import com.carrot123.alchemicalartisan.AlchemicalArtisan;
+import com.carrot123.alchemicalartisan.entity.ExplosiveProjectile;
 import com.carrot123.alchemicalartisan.item.ExplosiveItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -34,9 +34,10 @@ import java.util.List;
 )
 public class ExplosiveTrajectoryPreview {
 
-    private static final int MAX_STEPS = 120;
+    private static final int MAX_STEPS = 200;
     private static final int CIRCLE_SEGMENTS = 64;
-    private static final double GRAVITY = 0.03D;
+    private static final double GRAVITY = ExplosiveProjectile.ARROW_GRAVITY;
+    private static final double LINE_WIDTH = 2.0D;
 
     private record Trajectory(List<Vec3> points, boolean hit) {
     }
@@ -64,9 +65,22 @@ public class ExplosiveTrajectoryPreview {
             return;
         }
 
+        float chargePower = ExplosiveItem.getChargePower(
+                player.getTicksUsingItem()
+        );
+
+        if (chargePower < 0.1F) {
+            return;
+        }
+
+        float throwSpeed = ExplosiveItem.getThrowSpeed(
+                player.getTicksUsingItem()
+        );
+
         Trajectory trajectory = calculateTrajectory(
                 player,
-                event.getPartialTick()
+                event.getPartialTick(),
+                throwSpeed
         );
 
         if (trajectory.points().size() < 2) {
@@ -88,24 +102,23 @@ public class ExplosiveTrajectoryPreview {
         MultiBufferSource.BufferSource buffers =
                 minecraft.renderBuffers().bufferSource();
 
-        RenderType lineType = RenderType.debugLineStrip(2.0D);
-
-        VertexConsumer consumer =
-                buffers.getBuffer(lineType);
+        RenderType lineType =
+                RenderType.debugLineStrip(LINE_WIDTH);
 
         List<Vec3> points = trajectory.points();
 
-        for (int i = 1; i < points.size(); i++) {
-            drawLine(
-                    pose,
-                    consumer,
-                    points.get(i - 1),
-                    points.get(i),
-                    red,
-                    green,
-                    blue
-            );
-        }
+        VertexConsumer consumer = buffers.getBuffer(lineType);
+
+        drawPolyline(
+                pose,
+                consumer,
+                points,
+                red,
+                green,
+                blue
+        );
+
+        buffers.endBatch(lineType);
 
         if (trajectory.hit()) {
             Vec3 end = points.get(points.size() - 1);
@@ -113,13 +126,16 @@ public class ExplosiveTrajectoryPreview {
 
             drawArrow(
                     pose,
-                    consumer,
+                    buffers,
+                    lineType,
                     before,
                     end,
                     red,
                     green,
                     blue
             );
+
+            consumer = buffers.getBuffer(lineType);
 
             drawCircle(
                     pose,
@@ -130,15 +146,17 @@ public class ExplosiveTrajectoryPreview {
                     green,
                     blue
             );
+
+            buffers.endBatch(lineType);
         }
 
-        buffers.endBatch(RenderType.lines());
         pose.popPose();
     }
 
     private static Trajectory calculateTrajectory(
             Player player,
-            float partialTick
+            float partialTick,
+            float throwSpeed
     ) {
         Level level = player.level();
 
@@ -150,7 +168,7 @@ public class ExplosiveTrajectoryPreview {
         Vec3 velocity = Vec3.directionFromRotation(
                 player.getXRot(),
                 player.getYRot()
-        ).scale(ExplosiveItem.THROW_SPEED);
+        ).scale(throwSpeed);
 
         Vec3 playerMotion = player.getDeltaMovement();
 
@@ -175,9 +193,10 @@ public class ExplosiveTrajectoryPreview {
                     )
             );
 
-            Vec3 blockEnd = blockHit.getType() == HitResult.Type.MISS
-                    ? next
-                    : blockHit.getLocation();
+            Vec3 blockEnd =
+                    blockHit.getType() == HitResult.Type.MISS
+                            ? next
+                            : blockHit.getLocation();
 
             EntityHitResult entityHit =
                     ProjectileUtil.getEntityHitResult(
@@ -220,53 +239,54 @@ public class ExplosiveTrajectoryPreview {
         return new Trajectory(points, false);
     }
 
-    private static void drawLine(
+    private static void drawPolyline(
             PoseStack pose,
             VertexConsumer consumer,
-            Vec3 from,
-            Vec3 to,
+            List<Vec3> points,
             int red,
             int green,
             int blue
     ) {
-        Vec3 delta = to.subtract(from);
-
-        if (delta.lengthSqr() < 1.0E-8D) {
+        if (points.size() < 2) {
             return;
         }
 
-        Vec3 direction = delta.normalize();
+        for (int i = 0; i < points.size(); i++) {
+            Vec3 point = points.get(i);
 
-        consumer.vertex(
-                pose.last().pose(),
-                (float) from.x,
-                (float) from.y,
-                (float) from.z
-        ).color(red, green, blue, 255)
-                .normal(
-                        pose.last().normal(),
-                        (float) direction.x,
-                        (float) direction.y,
-                        (float) direction.z
-                ).endVertex();
+            Vec3 direction;
 
-        consumer.vertex(
-                pose.last().pose(),
-                (float) to.x,
-                (float) to.y,
-                (float) to.z
-        ).color(red, green, blue, 255)
-                .normal(
-                        pose.last().normal(),
-                        (float) direction.x,
-                        (float) direction.y,
-                        (float) direction.z
-                ).endVertex();
+            if (i < points.size() - 1) {
+                direction = points.get(i + 1).subtract(point);
+            } else {
+                direction = point.subtract(points.get(i - 1));
+            }
+
+            if (direction.lengthSqr() < 1.0E-8D) {
+                direction = new Vec3(0.0D, 1.0D, 0.0D);
+            } else {
+                direction = direction.normalize();
+            }
+
+            consumer.vertex(
+                    pose.last().pose(),
+                    (float) point.x,
+                    (float) point.y,
+                    (float) point.z
+            ).color(red, green, blue, 255)
+                    .normal(
+                            pose.last().normal(),
+                            (float) direction.x,
+                            (float) direction.y,
+                            (float) direction.z
+                    ).endVertex();
+        }
     }
 
     private static void drawArrow(
             PoseStack pose,
-            VertexConsumer consumer,
+            MultiBufferSource.BufferSource buffers,
+            RenderType lineType,
             Vec3 before,
             Vec3 end,
             int red,
@@ -280,6 +300,7 @@ public class ExplosiveTrajectoryPreview {
         }
 
         Vec3 direction = delta.normalize();
+
         Vec3 side = direction.cross(
                 new Vec3(0.0D, 1.0D, 0.0D)
         );
@@ -294,25 +315,31 @@ public class ExplosiveTrajectoryPreview {
 
         Vec3 base = end.subtract(direction.scale(0.5D));
 
-        drawLine(
+        VertexConsumer consumer = buffers.getBuffer(lineType);
+
+        drawPolyline(
                 pose,
                 consumer,
-                end,
-                base.add(side),
+                List.of(end, base.add(side)),
                 red,
                 green,
                 blue
         );
 
-        drawLine(
+        buffers.endBatch(lineType);
+
+        consumer = buffers.getBuffer(lineType);
+
+        drawPolyline(
                 pose,
                 consumer,
-                end,
-                base.subtract(side),
+                List.of(end, base.subtract(side)),
                 red,
                 green,
                 blue
         );
+
+        buffers.endBatch(lineType);
     }
 
     private static void drawCircle(
@@ -324,34 +351,28 @@ public class ExplosiveTrajectoryPreview {
             int green,
             int blue
     ) {
-        for (int i = 0; i < CIRCLE_SEGMENTS; i++) {
-            double angleA = Math.PI * 2.0D * i
+        List<Vec3> circlePoints = new ArrayList<>();
+
+        for (int i = 0; i <= CIRCLE_SEGMENTS; i++) {
+            double angle = Math.PI * 2.0D * i
                     / CIRCLE_SEGMENTS;
 
-            double angleB = Math.PI * 2.0D * (i + 1)
-                    / CIRCLE_SEGMENTS;
-
-            Vec3 a = new Vec3(
-                    center.x + Math.cos(angleA) * radius,
+            Vec3 point = new Vec3(
+                    center.x + Math.cos(angle) * radius,
                     center.y + 0.05D,
-                    center.z + Math.sin(angleA) * radius
+                    center.z + Math.sin(angle) * radius
             );
 
-            Vec3 b = new Vec3(
-                    center.x + Math.cos(angleB) * radius,
-                    center.y + 0.05D,
-                    center.z + Math.sin(angleB) * radius
-            );
-
-            drawLine(
-                    pose,
-                    consumer,
-                    a,
-                    b,
-                    red,
-                    green,
-                    blue
-            );
+            circlePoints.add(point);
         }
+
+        drawPolyline(
+                pose,
+                consumer,
+                circlePoints,
+                red,
+                green,
+                blue
+        );
     }
 }

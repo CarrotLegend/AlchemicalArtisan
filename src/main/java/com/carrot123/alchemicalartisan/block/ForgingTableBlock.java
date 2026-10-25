@@ -10,6 +10,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -21,11 +22,26 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
 public class ForgingTableBlock extends BaseEntityBlock {
     public static final EnumProperty<ForgingToolType> MODE = EnumProperty.create("mode", ForgingToolType.class);
+
+    private static final VoxelShape NORTH_SOUTH_SHAPE = Shapes.or(
+            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 4.0D, 14.0D),
+            Block.box(4.0D, 4.0D, 4.0D, 12.0D, 10.0D, 12.0D),
+            Block.box(0.0D, 10.0D, 3.0D, 16.0D, 16.0D, 13.0D)
+    );
+
+    private static final VoxelShape EAST_WEST_SHAPE = Shapes.or(
+            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 4.0D, 14.0D),
+            Block.box(4.0D, 4.0D, 4.0D, 12.0D, 10.0D, 12.0D),
+            Block.box(3.0D, 10.0D, 0.0D, 13.0D, 16.0D, 16.0D)
+    );
 
     public ForgingTableBlock(BlockBehaviour.Properties properties) {
         super(properties);
@@ -37,6 +53,18 @@ public class ForgingTableBlock extends BaseEntityBlock {
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return state.getValue(HorizontalDirectionalBlock.FACING).getAxis() == Direction.Axis.X
+                ? EAST_WEST_SHAPE
+                : NORTH_SOUTH_SHAPE;
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return getShape(state, level, pos, context);
     }
 
     @Override
@@ -57,29 +85,27 @@ public class ForgingTableBlock extends BaseEntityBlock {
         if (!(level.getBlockEntity(pos) instanceof ForgingTableBlockEntity table)) {
             return InteractionResult.PASS;
         }
-        if (player.isShiftKeyDown() && table.hasBlueprint()) {
-            if (!level.isClientSide) {
-                ItemStack blueprint = table.takeBlueprint();
-                if (!player.getInventory().add(blueprint)) {
-                    popResource(level, pos, blueprint);
-                }
-            }
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
+
         ItemStack held = player.getItemInHand(hand);
-        if (!player.isShiftKeyDown() && !table.hasBlueprint()
-                && held.getItem() instanceof ForgingBlueprintItem
-                && ForgingBlueprintItem.getToolType(held) != ForgingToolType.NONE) {
-            if (!level.isClientSide) {
-                ItemStack installed = held.copy();
-                installed.setCount(1);
-                if (table.installBlueprint(installed)) {
-                    held.shrink(1);
-                }
+
+        if (level.isClientSide) {
+            if (player.isShiftKeyDown()) {
+                return table.hasBlueprint() ? InteractionResult.SUCCESS : InteractionResult.PASS;
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
+
+            if (!table.hasBlueprint()) {
+                return held.getItem() instanceof ForgingBlueprintItem
+                        && ForgingBlueprintItem.getToolType(held) != ForgingToolType.NONE
+                        ? InteractionResult.SUCCESS
+                        : InteractionResult.PASS;
+            }
+
+            return held.isEmpty() ? InteractionResult.PASS : InteractionResult.SUCCESS;
         }
-        return InteractionResult.PASS;
+
+        return table.interact(player, hand)
+                ? InteractionResult.CONSUME
+                : InteractionResult.PASS;
     }
 
     @Override
@@ -87,10 +113,7 @@ public class ForgingTableBlock extends BaseEntityBlock {
             BlockState newState, boolean isMoving) {
         if (!state.is(newState.getBlock())) {
             if (!level.isClientSide && level.getBlockEntity(pos) instanceof ForgingTableBlockEntity table) {
-                ItemStack blueprint = table.takeBlueprintForDrop();
-                if (!blueprint.isEmpty()) {
-                    popResource(level, pos, blueprint);
-                }
+                table.dropContents();
             }
             super.onRemove(state, level, pos, newState, isMoving);
         }

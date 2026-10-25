@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "alchemicalartisan:bronze_block",
+    "alchemicalartisan:tin_block",
+    "alchemicalartisan:tin_ore",
+    "alchemicalartisan:deepslate_tin_ore"
+  ]
+}

@@ -26,9 +26,11 @@ public class ForgingTableRenderer implements BlockEntityRenderer<ForgingTableBlo
     public void render(ForgingTableBlockEntity table, float partialTick, PoseStack pose,
             MultiBufferSource buffer, int light, int overlay) {
         ForgingToolType mode = table.getMode();
+
         if (mode == ForgingToolType.NONE) {
             return;
         }
+
         Item icon = switch (mode) {
             case SWORD -> Items.IRON_SWORD;
             case PICKAXE -> Items.IRON_PICKAXE;
@@ -38,23 +40,54 @@ public class ForgingTableRenderer implements BlockEntityRenderer<ForgingTableBlo
             case NONE -> Items.AIR;
         };
 
-        pose.pushPose();
-        pose.translate(0.5, 1.35, 0.5);
-        pose.mulPose(Minecraft.getInstance().getEntityRenderDispatcher().cameraOrientation());
-        pose.mulPose(Axis.YP.rotationDegrees(180));
+        ItemStack display = table.getMetal().isEmpty()
+                ? new ItemStack(icon)
+                : table.getMetal();
 
-        pose.pushPose();
-        pose.translate(0, 0.19, 0);
-        pose.scale(0.38F, 0.38F, 0.38F);
-        context.getItemRenderer().renderStatic(new ItemStack(icon), ItemDisplayContext.FIXED,
-                light, overlay, pose, buffer, table.getLevel(), 0);
-        pose.popPose();
+        if (!display.isEmpty()) {
+            pose.pushPose();
+            pose.translate(0.5D, 1.035D, 0.5D);
+            pose.mulPose(Axis.XP.rotationDegrees(90.0F));
+            pose.scale(0.65F, 0.65F, 0.65F);
 
-        Component label = Component.translatable("forging.alchemicalartisan.part." + mode.getSerializedName());
+            context.getItemRenderer().renderStatic(
+                    display,
+                    ItemDisplayContext.FIXED,
+                    light,
+                    overlay,
+                    pose,
+                    buffer,
+                    table.getLevel(),
+                    0
+            );
+
+            pose.popPose();
+        }
+
+        Component label = Component.translatable(
+                "forging.alchemicalartisan.part." + mode.getSerializedName()
+        );
+
         Font font = context.getFont();
-        pose.scale(0.025F, -0.025F, 0.025F);
-        font.drawInBatch(label, -font.width(label) / 2.0F, 0, 0xFFFFFF, false,
-                pose.last().pose(), buffer, Font.DisplayMode.NORMAL, 0, light);
+
+        pose.pushPose();
+        pose.translate(0.5D, 2.0D, 0.5D);
+        pose.mulPose(Minecraft.getInstance().getEntityRenderDispatcher().cameraOrientation());
+        pose.scale(-0.025F, -0.025F, 0.025F);
+
+        font.drawInBatch(
+                label,
+                -font.width(label) / 2.0F,
+                0.0F,
+                0xFFFFFF,
+                false,
+                pose.last().pose(),
+                buffer,
+                Font.DisplayMode.NORMAL,
+                0,
+                light
+        );
+
         pose.popPose();
     }
 }

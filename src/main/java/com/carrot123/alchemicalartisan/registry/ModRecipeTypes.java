@@ -1,4 +1,3 @@
-
 package com.carrot123.alchemicalartisan.registry;
 
 import com.carrot123.alchemicalartisan.AlchemicalArtisan;
@@ -23,7 +22,7 @@ public class ModRecipeTypes {
             RECIPE_TYPES.register("alloying", () -> AlloyRecipeType.INSTANCE);
 
     public static final RegistryObject<RecipeType<ForgingRecipe>> FORGING =
-            RECIPE_TYPES.register("forging", () -> new RecipeType<>() {
+            RECIPE_TYPES.register("forging", () -> new RecipeType<ForgingRecipe>() {
                 @Override
                 public String toString() {
                     return AlchemicalArtisan.MOD_ID + ":forging";

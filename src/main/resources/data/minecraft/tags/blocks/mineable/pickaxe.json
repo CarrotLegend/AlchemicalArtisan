@@ -1,1 +1,14 @@
-{"replace": false, "values": ["alchemicalartisan:alloy_furnace", "alchemicalartisan:forging_table"]}
+{
+    "replace": false, 
+    "values": [
+        "alchemicalartisan:alloy_furnace", 
+        "alchemicalartisan:blazing_furnace",
+        "alchemicalartisan:forging_table",
+        "alchemicalartisan:bronze_block", 
+        "alchemicalartisan:steel_block", 
+        "alchemicalartisan:ether_block", 
+        "alchemicalartisan:tin_block", 
+        "alchemicalartisan:tin_ore", 
+        "alchemicalartisan:deepslate_tin_ore"
+    ]
+}

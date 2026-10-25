@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "alchemicalartisan:bronze_block"
+    }
+  ],
+  "result": {
+    "item": "alchemicalartisan:bronze_ingot",
+    "count": 9
+  }
+}

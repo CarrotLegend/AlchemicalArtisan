@@ -6,16 +6,6 @@
   "item.alchemicalartisan.paper_forging_blueprint": "纸质锻造图纸",
   "item.alchemicalartisan.parchment_forging_blueprint": "羊皮纸锻造图纸",
   "item.alchemicalartisan.forging_blueprint.typed": "%s（%s）",
-  "forging.alchemicalartisan.type.sword": "剑",
-  "forging.alchemicalartisan.type.pickaxe": "镐",
-  "forging.alchemicalartisan.type.axe": "斧",
-  "forging.alchemicalartisan.type.hoe": "锄",
-  "forging.alchemicalartisan.type.shovel": "锹",
-  "forging.alchemicalartisan.part.sword": "剑刃部件",
-  "forging.alchemicalartisan.part.pickaxe": "镐头部件",
-  "forging.alchemicalartisan.part.axe": "斧头部件",
-  "forging.alchemicalartisan.part.hoe": "锄头部件",
-  "forging.alchemicalartisan.part.shovel": "锹头部件",
   "item.alchemicalartisan.herbal_fiber": "草本纤维",
   "item.alchemicalartisan.animal_sinew": "动物筋腱",
   "item.alchemicalartisan.processed_sinew": "加工兽筋",
@@ -65,6 +55,12 @@
   "block.alchemicalartisan.blazing_furnace": "炽烈熔炉",
   "block.alchemicalartisan.alloy_furnace": "合金炉",
   "block.alchemicalartisan.forging_table": "锻铁台",
+  "block.alchemicalartisan.bronze_block": "青铜块",
+  "block.alchemicalartisan.steel_block": "钢块",
+  "block.alchemicalartisan.ether_block": "以太合金块",
+  "block.alchemicalartisan.tin_block": "锡块",
+  "block.alchemicalartisan.tin_ore": "锡矿",
+  "block.alchemicalartisan.deepslate_tin_ore": "深层锡矿",
   
   "container.alchemicalartisan.blazing_furnace": "炽烈熔炉",
   "container.alchemicalartisan.alloy_furnace": "合金炉",
@@ -74,6 +70,24 @@
   "jei.alchemicalartisan.blazing.batch": "每批最多%s份原料，耗时%s秒",
   "jei.alchemicalartisan.blazing.bonus": "%s%%概率额外产出1份",
 
-  "message.alchemicalartisan.ether_extractor.end_only": "只有在末地才能提取以太",
-  "message.alchemicalartisan.ether_extractor.need_bottle": "副手需要持有玻璃瓶"
+  "message.alchemicalartisan.ether_extractor.need_bottle": "副手需要持有玻璃瓶",
+  "message.alchemicalartisan.forging_table.in_progress": "锻造已经开始，无法取下材料和蓝图",
+  "message.alchemicalartisan.forging_table.need_typed_blueprint": "请先将蓝图与对应类型的工具合成",
+  "message.alchemicalartisan.forging_table.no_matching_recipe": "当前蓝图没有匹配的锻造配方",
+  "message.alchemicalartisan.forging_table.hammer_too_weak": "锻锤等级不足或锻造材料不匹配",
+  "message.alchemicalartisan.forging_table.progress": "锻造进度：%s/%s",
+
+  
+  "forging.alchemicalartisan.type.sword": "剑类",
+  "forging.alchemicalartisan.type.pickaxe": "镐类",
+  "forging.alchemicalartisan.type.axe": "斧类",
+  "forging.alchemicalartisan.type.hoe": "锄类",
+  "forging.alchemicalartisan.type.shovel": "锹类",
+  "forging.alchemicalartisan.part.sword": "剑刃部件",
+  "forging.alchemicalartisan.part.pickaxe": "镐头部件",
+  "forging.alchemicalartisan.part.hoe": "锄头部件",
+  "forging.alchemicalartisan.part.shovel": "锹头部件",
+  "forging.alchemicalartisan.part.axe": "斧刃部件"
+
+
 }

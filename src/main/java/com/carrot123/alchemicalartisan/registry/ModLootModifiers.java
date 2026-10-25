@@ -1,4 +1,3 @@
-
 package com.carrot123.alchemicalartisan.registry;
 
 import com.carrot123.alchemicalartisan.AlchemicalArtisan;

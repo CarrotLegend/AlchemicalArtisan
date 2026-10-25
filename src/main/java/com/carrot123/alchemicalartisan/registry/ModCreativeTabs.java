@@ -105,6 +105,12 @@ public class ModCreativeTabs {
                     ModItems.BLAZING_FURNACE.get()
                 ))
                 .displayItems((parameters, output) -> {
+                    output.accept(ModItems.TIN_BLOCK.get());
+                    output.accept(ModItems.BRONZE_BLOCK.get());
+                    output.accept(ModItems.STEEL_BLOCK.get());
+                    output.accept(ModItems.ETHER_BLOCK.get());
+                    output.accept(ModItems.TIN_ORE.get());
+                    output.accept(ModItems.DEEPSLATE_TIN_ORE.get());
                     output.accept(ModItems.BLAZING_FURNACE.get());
                     output.accept(ModItems.ALLOY_FURNACE.get());
                     output.accept(ModItems.FORGING_TABLE.get());

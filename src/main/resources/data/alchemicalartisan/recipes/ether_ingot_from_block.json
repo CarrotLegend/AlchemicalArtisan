@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "alchemicalartisan:ether_block"
+    }
+  ],
+  "result": {
+    "item": "alchemicalartisan:ether_ingot",
+    "count": 9
+  }
+}
