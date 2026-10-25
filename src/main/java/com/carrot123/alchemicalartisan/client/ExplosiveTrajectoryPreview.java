@@ -37,7 +37,7 @@ public class ExplosiveTrajectoryPreview {
     private static final int MAX_STEPS = 200;
     private static final int CIRCLE_SEGMENTS = 64;
     private static final double GRAVITY = ExplosiveProjectile.ARROW_GRAVITY;
-    private static final double LINE_WIDTH = 2.0D;
+    private static final double LINE_WIDTH = 4.0D;
 
     private record Trajectory(List<Vec3> points, boolean hit) {
     }

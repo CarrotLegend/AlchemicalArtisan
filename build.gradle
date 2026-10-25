@@ -44,6 +44,8 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'info'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 "${modId}" {
@@ -84,6 +86,11 @@ repositories {
     mavenCentral()
 
     maven {
+        name = 'GeckoLib'
+        url = uri('https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/')
+    }
+
+    maven {
         name = 'BlameJared'
         url = uri('https://maven.blamejared.com/')
     }
@@ -92,6 +99,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${mcVersion}-${forgeVersion}"
 
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-1.20.1:4.7")
     compileOnly fg.deobf("mezz.jei:jei-${mcVersion}-common-api:${jeiVersion}")
     compileOnly fg.deobf("mezz.jei:jei-${mcVersion}-forge-api:${jeiVersion}")
     runtimeOnly fg.deobf("mezz.jei:jei-${mcVersion}-forge:${jeiVersion}")
@@ -108,11 +116,11 @@ tasks.named('processResources', ProcessResources).configure {
             loader_version_range   : '[47,)',
             mod_id                 : modId,
             mod_name               : modName,
-            mod_license            : modLicense,
-            mod_version            : modVersion,
-            mod_authors            : modAuthors,
-            mod_description        : modDescription,
-            jei_version_range      : jeiVersionRange
+            mod_license           : modLicense,
+            mod_version           : modVersion,
+            mod_authors           : modAuthors,
+            mod_description       : modDescription,
+            jei_version_range     : jeiVersionRange
     ]
 
     inputs.properties replaceProperties

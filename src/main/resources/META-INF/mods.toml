@@ -29,3 +29,10 @@ mandatory=false
 versionRange="${jei_version_range}"
 ordering="NONE"
 side="CLIENT"
+
+[[dependencies.alchemicalartisan]]
+modId="geckolib"
+mandatory=true
+versionRange="[4.7,)"
+ordering="NONE"
+side="BOTH"

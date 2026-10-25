@@ -55,12 +55,14 @@ public class ForgingTableBlock extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 
+    
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return state.getValue(HorizontalDirectionalBlock.FACING).getAxis() == Direction.Axis.X
-                ? EAST_WEST_SHAPE
-                : NORTH_SOUTH_SHAPE;
+                ? NORTH_SOUTH_SHAPE
+                : EAST_WEST_SHAPE;
     }
+
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {

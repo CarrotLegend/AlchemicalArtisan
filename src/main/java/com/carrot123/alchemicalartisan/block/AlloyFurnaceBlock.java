@@ -1,11 +1,16 @@
 package com.carrot123.alchemicalartisan.block;
 
 import com.carrot123.alchemicalartisan.blockentity.AlloyFurnaceBlockEntity;
+import com.carrot123.alchemicalartisan.blockentity.GeoAlloyFurnaceBlockEntity;
 import com.carrot123.alchemicalartisan.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -48,7 +53,7 @@ public class AlloyFurnaceBlock extends BaseEntityBlock implements EntityBlock {
 
     @Override
     public RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
+        return RenderShape.ENTITYBLOCK_ANIMATED;
     }
 
     @Override
@@ -76,6 +81,35 @@ public class AlloyFurnaceBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (!state.getValue(LIT)) {
+            return;
+        }
+
+        Direction facing = state.getValue(HorizontalDirectionalBlock.FACING);
+        double x = pos.getX() + 0.5D;
+        double y = pos.getY() + 0.6D;
+        double z = pos.getZ() + 0.5D;
+        double offset = 0.52D;
+        double sideways = (random.nextDouble() - 0.5D) * 0.6D;
+        double particleX = x + facing.getStepX() * offset;
+        double particleZ = z + facing.getStepZ() * offset;
+
+        if (facing.getAxis() == Direction.Axis.Z) {
+            particleX += sideways;
+        } else {
+            particleZ += sideways;
+        }
+
+        level.addParticle(ParticleTypes.SMOKE, particleX, y, particleZ, 0.0D, 0.0D, 0.0D);
+        level.addParticle(ParticleTypes.FLAME, particleX, y, particleZ, 0.0D, 0.0D, 0.0D);
+
+        if (random.nextDouble() < 0.1D) {
+            level.playLocalSound(x, y, z, SoundEvents.FURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
+        }
+    }
+
+    @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
@@ -90,7 +124,7 @@ public class AlloyFurnaceBlock extends BaseEntityBlock implements EntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new AlloyFurnaceBlockEntity(pos, state);
+        return new GeoAlloyFurnaceBlockEntity(pos, state);
     }
 
     @Nullable
