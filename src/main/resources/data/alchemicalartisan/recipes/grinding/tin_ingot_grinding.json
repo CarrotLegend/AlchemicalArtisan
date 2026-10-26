@@ -1,0 +1,10 @@
+{
+  "type": "alchemicalartisan:grinding",
+  "ingredient": {
+    "item": "alchemicalartisan:tin_ingot"
+  },
+  "result": {
+    "item": "alchemicalartisan:tin_dust",
+    "count": 4
+  }
+}

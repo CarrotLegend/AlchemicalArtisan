@@ -6,6 +6,7 @@ import com.carrot123.alchemicalartisan.recipe.AlloyRecipeSerializer;
 import com.carrot123.alchemicalartisan.recipe.BlueprintBindingRecipe;
 import com.carrot123.alchemicalartisan.recipe.ForgingRecipe;
 import com.carrot123.alchemicalartisan.recipe.ForgingRecipeSerializer;
+import com.carrot123.alchemicalartisan.recipe.GrindingRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,6 +26,9 @@ public class ModRecipeSerializers {
 
     public static final RegistryObject<RecipeSerializer<ForgingRecipe>> FORGING =
             SERIALIZERS.register("forging", ForgingRecipeSerializer::new);
+
+    public static final RegistryObject<RecipeSerializer<GrindingRecipe>> GRINDING =
+            SERIALIZERS.register("grinding", GrindingRecipe.Serializer::new);
 
     public static void register(IEventBus bus) { SERIALIZERS.register(bus); }
 }

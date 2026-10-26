@@ -6,6 +6,7 @@ import com.carrot123.alchemicalartisan.client.screen.BlazingFurnaceScreen;
 import com.carrot123.alchemicalartisan.client.renderer.AlloyFurnaceGeoModel;
 import com.carrot123.alchemicalartisan.client.renderer.BlazingFurnaceGeoModel;
 import com.carrot123.alchemicalartisan.client.renderer.ForgingTableRenderer;
+import com.carrot123.alchemicalartisan.client.renderer.MortarRenderer;
 import com.carrot123.alchemicalartisan.registry.ModBlockEntities;
 import com.carrot123.alchemicalartisan.registry.ModEntities;
 import com.carrot123.alchemicalartisan.registry.ModMenuTypes;
@@ -55,6 +56,10 @@ public class ModClientEvents {
         event.registerBlockEntityRenderer(
                 ModBlockEntities.FORGING_TABLE.get(),
                 ForgingTableRenderer::new
+        );
+        event.registerBlockEntityRenderer(
+                ModBlockEntities.MORTAR.get(),
+                MortarRenderer::new
         );
         event.registerEntityRenderer(
                 ModEntities.EXPLOSIVE_PROJECTILE.get(),

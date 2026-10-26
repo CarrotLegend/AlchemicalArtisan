@@ -1,0 +1,92 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "all": "alchemicalartisan:block/mortar",
+    "particle": "alchemicalartisan:block/mortar"
+  },
+  "elements": [
+    {
+      "from": [3, 0, 3],
+      "to": [13, 2, 13],
+      "faces": {
+        "north": {"texture": "#all"},
+        "south": {"texture": "#all"},
+        "east": {"texture": "#all"},
+        "west": {"texture": "#all"},
+        "up": {"texture": "#all"},
+        "down": {"texture": "#all"}
+      }
+    },
+    {
+      "from": [3, 2, 3],
+      "to": [13, 7, 5],
+      "faces": {
+        "north": {"texture": "#all"},
+        "south": {"texture": "#all"},
+        "east": {"texture": "#all"},
+        "west": {"texture": "#all"},
+        "up": {"texture": "#all"},
+        "down": {"texture": "#all"}
+      }
+    },
+    {
+      "from": [3, 2, 11],
+      "to": [13, 7, 13],
+      "faces": {
+        "north": {"texture": "#all"},
+        "south": {"texture": "#all"},
+        "east": {"texture": "#all"},
+        "west": {"texture": "#all"},
+        "up": {"texture": "#all"},
+        "down": {"texture": "#all"}
+      }
+    },
+    {
+      "from": [3, 2, 5],
+      "to": [5, 7, 11],
+      "faces": {
+        "north": {"texture": "#all"},
+        "south": {"texture": "#all"},
+        "east": {"texture": "#all"},
+        "west": {"texture": "#all"},
+        "up": {"texture": "#all"},
+        "down": {"texture": "#all"}
+      }
+    },
+    {
+      "from": [11, 2, 5],
+      "to": [13, 7, 11],
+      "faces": {
+        "north": {"texture": "#all"},
+        "south": {"texture": "#all"},
+        "east": {"texture": "#all"},
+        "west": {"texture": "#all"},
+        "up": {"texture": "#all"},
+        "down": {"texture": "#all"}
+      }
+    },
+    {
+      "from": [7, 9, 7],
+      "to": [9, 19, 9],
+      "faces": {
+        "north": {"texture": "#all"},
+        "south": {"texture": "#all"},
+        "east": {"texture": "#all"},
+        "west": {"texture": "#all"},
+        "up": {"texture": "#all"},
+        "down": {"texture": "#all"}
+      }
+    }
+  ],
+  "display": {
+    "gui": {
+      "rotation": [30, 225, 0],
+      "translation": [0, -2, 0],
+      "scale": [0.8, 0.8, 0.8]
+    },
+    "ground": {
+      "translation": [0, 2, 0],
+      "scale": [0.5, 0.5, 0.5]
+    }
+  }
+}

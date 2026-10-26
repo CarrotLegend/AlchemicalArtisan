@@ -6,6 +6,7 @@ import com.carrot123.alchemicalartisan.blockentity.BlazingFurnaceBlockEntity;
 import com.carrot123.alchemicalartisan.blockentity.ForgingTableBlockEntity;
 import com.carrot123.alchemicalartisan.blockentity.GeoAlloyFurnaceBlockEntity;
 import com.carrot123.alchemicalartisan.blockentity.GeoBlazingFurnaceBlockEntity;
+import com.carrot123.alchemicalartisan.blockentity.MortarBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,25 +22,20 @@ public class ModBlockEntities {
             );
 
     public static final RegistryObject<BlockEntityType<GeoBlazingFurnaceBlockEntity>> BLAZING_FURNACE =
-            BLOCK_ENTITIES.register("blazing_furnace",
-                    () -> BlockEntityType.Builder.of(
-                            GeoBlazingFurnaceBlockEntity::new,
-                            ModBlocks.BLAZING_FURNACE.get()
-                    ).build(null));
+            BLOCK_ENTITIES.register("blazing_furnace", () -> BlockEntityType.Builder.of(
+                GeoBlazingFurnaceBlockEntity::new, ModBlocks.BLAZING_FURNACE.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<GeoAlloyFurnaceBlockEntity>> ALLOY_FURNACE =
-            BLOCK_ENTITIES.register("alloy_furnace",
-                    () -> BlockEntityType.Builder.of(
-                            GeoAlloyFurnaceBlockEntity::new,
-                            ModBlocks.ALLOY_FURNACE.get()
-                    ).build(null));
+            BLOCK_ENTITIES.register("alloy_furnace", () -> BlockEntityType.Builder.of(
+                GeoAlloyFurnaceBlockEntity::new, ModBlocks.ALLOY_FURNACE.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<ForgingTableBlockEntity>> FORGING_TABLE =
-            BLOCK_ENTITIES.register("forging_table",
-                    () -> BlockEntityType.Builder.of(
-                            ForgingTableBlockEntity::new,
-                            ModBlocks.FORGING_TABLE.get()
-                    ).build(null));
+            BLOCK_ENTITIES.register("forging_table", () -> BlockEntityType.Builder.of(
+                ForgingTableBlockEntity::new, ModBlocks.FORGING_TABLE.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<MortarBlockEntity>> MORTAR =
+            BLOCK_ENTITIES.register("mortar", () -> BlockEntityType.Builder.of(
+                MortarBlockEntity::new, ModBlocks.MORTAR.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

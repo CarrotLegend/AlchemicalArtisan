@@ -114,6 +114,7 @@ public class ModCreativeTabs {
                     output.accept(ModItems.BLAZING_FURNACE.get());
                     output.accept(ModItems.ALLOY_FURNACE.get());
                     output.accept(ModItems.FORGING_TABLE.get());
+                    output.accept(ModItems.MORTAR.get());
                 })
                 .build()
         );

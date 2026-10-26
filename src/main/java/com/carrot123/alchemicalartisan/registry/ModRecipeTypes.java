@@ -4,6 +4,7 @@ import com.carrot123.alchemicalartisan.AlchemicalArtisan;
 import com.carrot123.alchemicalartisan.recipe.AlloyRecipe;
 import com.carrot123.alchemicalartisan.recipe.AlloyRecipeType;
 import com.carrot123.alchemicalartisan.recipe.ForgingRecipe;
+import com.carrot123.alchemicalartisan.recipe.GrindingRecipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,6 +27,14 @@ public class ModRecipeTypes {
                 @Override
                 public String toString() {
                     return AlchemicalArtisan.MOD_ID + ":forging";
+                }
+            });
+
+    public static final RegistryObject<RecipeType<GrindingRecipe>> GRINDING =
+            RECIPE_TYPES.register("grinding", () -> new RecipeType<GrindingRecipe>() {
+                @Override
+                public String toString() {
+                    return AlchemicalArtisan.MOD_ID + ":grinding";
                 }
             });
 

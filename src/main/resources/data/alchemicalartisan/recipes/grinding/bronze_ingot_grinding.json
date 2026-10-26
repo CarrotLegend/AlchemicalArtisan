@@ -1,0 +1,10 @@
+{
+  "type": "alchemicalartisan:grinding",
+  "ingredient": {
+    "item": "alchemicalartisan:bronze_ingot"
+  },
+  "result": {
+    "item": "alchemicalartisan:bronze_dust",
+    "count": 4
+  }
+}

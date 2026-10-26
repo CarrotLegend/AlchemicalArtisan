@@ -7,6 +7,7 @@ import com.carrot123.alchemicalartisan.item.ExplosiveItem;
 import com.carrot123.alchemicalartisan.item.ForgingBlueprintItem;
 import com.carrot123.alchemicalartisan.item.ForgingHammerItem;
 import com.carrot123.alchemicalartisan.item.KnifeItem;
+import com.carrot123.alchemicalartisan.item.MortarItem;
 
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
@@ -80,6 +81,7 @@ public class ModItems {
     public static final RegistryObject<Item> BLAZING_FURNACE = ITEMS.register("blazing_furnace", () -> new BlockItem(ModBlocks.BLAZING_FURNACE.get(), new Item.Properties()));
     public static final RegistryObject<Item> ALLOY_FURNACE = ITEMS.register("alloy_furnace", () -> new BlockItem(ModBlocks.ALLOY_FURNACE.get(), new Item.Properties()));
     public static final RegistryObject<Item> FORGING_TABLE = ITEMS.register("forging_table", () -> new BlockItem(ModBlocks.FORGING_TABLE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MORTAR = ITEMS.register("mortar", () -> new MortarItem(ModBlocks.MORTAR.get(), new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_BLOCK = ITEMS.register("bronze_block", () -> new BlockItem(ModBlocks.BRONZE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> STEEL_BLOCK = ITEMS.register("steel_block", () -> new BlockItem(ModBlocks.STEEL_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> ETHER_BLOCK = ITEMS.register("ether_block", () -> new BlockItem(ModBlocks.ETHER_BLOCK.get(), new Item.Properties().fireResistant()));

@@ -4,6 +4,8 @@ import com.carrot123.alchemicalartisan.AlchemicalArtisan;
 import com.carrot123.alchemicalartisan.block.AlloyFurnaceBlock;
 import com.carrot123.alchemicalartisan.block.BlazingFurnaceBlock;
 import com.carrot123.alchemicalartisan.block.ForgingTableBlock;
+import com.carrot123.alchemicalartisan.block.MortarBlock;
+
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -20,6 +22,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> BLAZING_FURNACE = BLOCKS.register("blazing_furnace", () -> new BlazingFurnaceBlock(BlockBehaviour.Properties.copy(Blocks.BLAST_FURNACE).noOcclusion()));
     public static final RegistryObject<Block> ALLOY_FURNACE = BLOCKS.register("alloy_furnace", () -> new AlloyFurnaceBlock(BlockBehaviour.Properties.copy(Blocks.BLAST_FURNACE).noOcclusion()));
     public static final RegistryObject<Block> FORGING_TABLE = BLOCKS.register("forging_table", () -> new ForgingTableBlock(BlockBehaviour.Properties.copy(Blocks.ANVIL).noOcclusion()));
+    public static final RegistryObject<Block> MORTAR = BLOCKS.register("mortar", () -> new MortarBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion()));
     public static final RegistryObject<Block> BRONZE_BLOCK = BLOCKS.register("bronze_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> STEEL_BLOCK = BLOCKS.register("steel_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> ETHER_BLOCK = BLOCKS.register("ether_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)));

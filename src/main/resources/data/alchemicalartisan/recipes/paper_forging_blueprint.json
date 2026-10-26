@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {"item": "minecraft:paper"},
+    {"item": "minecraft:paper"},
+    {"item": "minecraft:paper"},
+    {"item": "minecraft:paper"}
+  ],
+  "result": {
+    "item": "alchemicalartisan:paper_forging_blueprint",
+    "count": 1
+  }
+}

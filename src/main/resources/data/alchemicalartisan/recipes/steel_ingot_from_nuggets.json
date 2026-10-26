@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SSS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "alchemicalartisan:steel_nugget"
+    }
+  },
+  "result": {
+    "item": "alchemicalartisan:steel_ingot",
+    "count": 1
+  }
+}

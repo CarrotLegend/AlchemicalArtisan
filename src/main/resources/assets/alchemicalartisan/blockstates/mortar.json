@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "grinding=false": {
+      "model": "alchemicalartisan:block/mortar"
+    },
+    "grinding=true": {
+      "model": "alchemicalartisan:block/mortar"
+    }
+  }
+}

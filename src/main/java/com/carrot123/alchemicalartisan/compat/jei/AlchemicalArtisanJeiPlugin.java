@@ -1,4 +1,3 @@
-
 package com.carrot123.alchemicalartisan.compat.jei;
 
 import com.carrot123.alchemicalartisan.AlchemicalArtisan;
@@ -41,7 +40,8 @@ public class AlchemicalArtisanJeiPlugin implements IModPlugin {
 
         registration.addRecipeCategories(
                 new AlloyFurnaceJeiCategory(helper),
-                new BlazingFurnaceJeiCategory(helper)
+                new BlazingFurnaceJeiCategory(helper),
+                new MortarJeiCategory(helper)
         );
     }
 
@@ -73,6 +73,13 @@ public class AlchemicalArtisanJeiPlugin implements IModPlugin {
                 BlazingFurnaceJeiCategory.TYPE,
                 blastingRecipes
         );
+
+        registration.addRecipes(
+                MortarJeiCategory.TYPE,
+                manager.getAllRecipesFor(
+                        ModRecipeTypes.GRINDING.get()
+                )
+        );
     }
 
     @Override
@@ -87,6 +94,11 @@ public class AlchemicalArtisanJeiPlugin implements IModPlugin {
         registration.addRecipeCatalyst(
                 new ItemStack(ModBlocks.BLAZING_FURNACE.get()),
                 BlazingFurnaceJeiCategory.TYPE
+        );
+
+        registration.addRecipeCatalyst(
+                new ItemStack(ModBlocks.MORTAR.get()),
+                MortarJeiCategory.TYPE
         );
     }
 
